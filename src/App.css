@@ -1,0 +1,171 @@
+:root {
+    --primary: #7D5FFE;
+    --black: #000000;
+    --danger: #f5260b;
+    --white: #ffffff;
+    --gray: #d7d2d2;
+    --darkGray: #797979;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+ol,
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+button,
+input {
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    padding: 3px;
+    border-radius: 10px;
+    height: 100px;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 2px;
+    padding: 5px;
+    background-color: #1C1B4D;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type=number] {
+    appearance: textfield;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.flexAlignCenter {
+    display: flex;
+    align-items: center;
+}
+
+.flexJustifyCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexJustifyBetween {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexAlignEnd {
+    display: flex;
+    align-items: flex-end;
+}
+
+.flexAlignStart {
+    display: flex;
+    align-items: flex-start;
+}
+
+.flexJustifyStart {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flexJustifyEnd {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.flexAlignBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Margin style */
+
+
+.marginX10 {
+    margin: 0 10px;
+}
+
+.marginX20 {
+    margin: 0 20px;
+}
+
+.marginX30 {
+    margin: 0 30px;
+}
+
+.marginY10 {
+    margin: 10px 0;
+}
+
+.marginY20 {
+    margin: 20px 0;
+}
+
+.marginY30 {
+    margin: 30px 0;
+}
+
+.marginLeft10 {
+    margin-left: 10px;
+}
+
+.marginLeft20 {
+    margin-left: 20px;
+}
+
+.marginLeft30 {
+    margin-left: 30px;
+}
+
+.marginRight10 {
+    margin-right: 10px;
+}
+
+.marginRight20 {
+    margin-right: 20px;
+}
+
+.marginRight30 {
+    margin-right: 30px;
+}
+
+.marginBottom20 {
+    margin-bottom: 20px;
+}
+
+.marginTop20 {
+    margin-top: 20px;
+}
