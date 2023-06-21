@@ -8,7 +8,7 @@ import PageLoader from "../../ui/PageLoader/PageLoader";
 
 const ProtectedRouter = () => {
     const token = localStorage.getItem("token");
-    const isComplete = localStorage.getItem("isOnboardingDone");
+    const isComplete = localStorage.getItem("isComplete");
 
     return (
         token ? (isComplete === "true" ?

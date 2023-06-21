@@ -28,6 +28,10 @@
     color: var(--darkGray);
 }
 
+.OnboardingHeaderContent span {
+    color: var(--primary);
+}
+
 .OnboardingHeaderDots {
     margin-top: 10px;
     width: 50%;

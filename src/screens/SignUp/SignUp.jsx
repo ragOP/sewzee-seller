@@ -1,4 +1,5 @@
 import { TextField } from "@mui/material"
+import { toast } from "react-hot-toast";
 import { useState, useEffect, useReducer } from "react"
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from '@mui/material';
@@ -6,13 +7,10 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 // local imports
+import "../Login/Login.css"
 import { CustomButton } from "../../ui/constants"
 import { sewzeeImages } from "../../assets";
-import "../Login/Login.css"
 import API from "../../services/common";
-import { toast } from "react-hot-toast";
-import OnboardingReducer, { initialState } from "../../hooks/onBordingReducer";
-import { CONTACTDETAIL } from "../../hooks/constant";
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -20,7 +18,6 @@ const SignUp = () => {
     const [isDisabled, setIsDisabled] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const [formState, dispatch] = useReducer(OnboardingReducer, initialState);
     const [inputData, setInputData] = useState({
         email: "",
         password: ""
@@ -40,14 +37,9 @@ const SignUp = () => {
             if (req.status === 200) {
                 localStorage.setItem("token", req.data.token);
                 localStorage.setItem("isComplete", req.data.isComplete)
-                dispatch({
-                    type: CONTACTDETAIL,
-                    payload: {
-                        index: 0,
-                        email: inputData.email,
-                        role: "Owner"
-                    }
-                })
+                if (req.data.isComplete === false) {
+                    localStorage.setItem("userEmail", req.data.email)
+                }
                 navigate("/onboarding")
                 setIsDisabled(false);
                 setIsLoading(false);
@@ -68,7 +60,6 @@ const SignUp = () => {
 
     }, [token])
 
-    console.log(formState)
 
     return (
         <div className="loginWrapper">

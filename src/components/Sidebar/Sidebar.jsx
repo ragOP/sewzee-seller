@@ -5,7 +5,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-
+import Inventory2Icon from '@mui/icons-material/Inventory2';
 
 import { sewzeeImages } from "../../assets";
 import { sidebarList } from "../../constants";
@@ -67,6 +67,15 @@ const IconHandaler = (title, type) => {
                 fontSize: "1.8rem",
             }} />
             break;
+        case "Products":
+            icon = type ? <Inventory2Icon style={{
+                color: "white",
+                fontSize: "1.8rem",
+            }} /> : <Inventory2Icon style={{
+                color: "black",
+                fontSize: "1.8rem",
+            }} />
+            break;
         default:
             break;
     }
@@ -75,7 +84,7 @@ const IconHandaler = (title, type) => {
 }
 
 
-const Sidebar = ({ toggleDrawer, open, classes }) => {
+const Sidebar = ({ toggleDrawer, open, classes, handleListClick }) => {
     const location = window.location.pathname
 
     return (
@@ -112,7 +121,7 @@ const Sidebar = ({ toggleDrawer, open, classes }) => {
                                 ? classes.selectedList
                                 : classes.unSelectedList
                         }
-                    // onClick={() => handleListClick("/users")}
+                        onClick={() => handleListClick(item.link)}
                     >
                         <ListItemIcon>
                             {location?.includes(item?.link) ? IconHandaler(item?.label, true) : IconHandaler(item?.label, false)}

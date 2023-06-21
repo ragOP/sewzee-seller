@@ -1,4 +1,4 @@
-import { ADDRESS, BANKDETAILS, CONTACTDETAIL, CONTACTDETAILSOWNER, GENARELINFORMATION, INCREASECONTACTDETAILS, LOGO } from "./constant";
+import { ADDRESS, BANKDETAILS, CONTACTDETAIL, GENARELINFORMATION, INCREASECONTACTDETAILS, LOGO } from "./constant";
 
 export const initialState = {
     name: "",
@@ -32,9 +32,6 @@ export const initialState = {
 }
 
 const OnboardingReducer = (state = initialState, action) => {
-    console.log(action?.payload)
-    console.log(action.type)
-    debugger
     const { name, value } = action?.payload;
     switch (action.type) {
         case LOGO:
@@ -73,8 +70,7 @@ const OnboardingReducer = (state = initialState, action) => {
                     contactDetails: state.contactDetails.filter((item, index) => index !== action?.payload?.index)
                 }
             }
-        case CONTACTDETAILSOWNER:
-            debugger
+        case CONTACTDETAIL:
             return {
                 ...state,
                 contactDetails: state.contactDetails.map((item, index) => {

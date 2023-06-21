@@ -1,8 +1,8 @@
 import "./CustomButton.css"
 
-const CustomButton = ({ children, classId, handleClick, isDesabled }) => {
+const CustomButton = ({ children, classId, handleClick, isDisabled }) => {
     return (
-        <button disabled={isDesabled} onClick={handleClick} type="submit" className={`customButton ${classId}`}>{children}</button>
+        <button disabled={isDisabled} onClick={handleClick} type="submit" className={`customButton ${classId}`}>{children}</button>
     )
 }
 

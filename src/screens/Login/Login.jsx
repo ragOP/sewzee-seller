@@ -1,20 +1,16 @@
-import { useEffect, useReducer, useState } from "react"
+import { toast } from 'react-hot-toast';
+import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-
 // local imports
 import "./Login.css"
 import { sewzeeImages } from "../../assets"
 import { CustomButton } from '../../ui/constants';
 import API from '../../services/common';
-import { toast } from 'react-hot-toast';
-import OnboardingReducer, { initialState } from "../../hooks/onBordingReducer"
-import { CONTACTDETAIL, CONTACTDETAILSOWNER } from '../../hooks/constant';
-
 
 
 const Login = () => {
@@ -22,7 +18,6 @@ const Login = () => {
     const token = localStorage.getItem("token");
     const [isDisabled, setIsDisabled] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
-    const [formState, dispatch] = useReducer(OnboardingReducer, initialState);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [inputData, setInputData] = useState({
         email: "",
@@ -43,12 +38,7 @@ const Login = () => {
                 localStorage.setItem("token", req.data.token);
                 localStorage.setItem("isComplete", req.data.isComplete)
                 if (req.data.isComplete === false) {
-                    debugger
-                    dispatch({
-                        type: CONTACTDETAILSOWNER,
-                        payload: { index: 0, email: inputData.email }
-                    })
-                    debugger
+                    localStorage.setItem("userEmail", req.data.email)
                 }
                 navigate("/dashboard")
                 setIsDisabled(false);
@@ -56,7 +46,7 @@ const Login = () => {
             }
 
         } catch (error) {
-            toast.error(error.response.data.message);
+            toast.error(error?.response?.data?.message);
             setIsDisabled(false);
             setIsLoading(false);
         }
@@ -69,11 +59,9 @@ const Login = () => {
             setIsLoading(false);
             setIsDisabled(false);
         }
-
     }, [token])
 
 
-    console.log(formState)
 
     return (
         <div className="loginWrapper">

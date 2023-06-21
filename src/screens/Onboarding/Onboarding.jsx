@@ -1,18 +1,20 @@
 
 import { useEffect, useReducer, useRef, useState } from "react"
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box, CircularProgress, } from '@mui/material';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 
-
+// local imports
 import "./Onboarding.css"
 import { storage } from "../../firebase/firebase";
 import { sewzeeImages } from "../../assets"
-import { ADDRESS, BANKDETAILS, GENARELINFORMATION, INCREASECONTACTDETAILS, LOGO } from "../../hooks/constant"
+import { ADDRESS, BANKDETAILS, CONTACTDETAIL, GENARELINFORMATION, INCREASECONTACTDETAILS, LOGO } from "../../hooks/constant"
 import OnboardingReducer, { initialState } from "../../hooks/onBordingReducer"
 import { CustomButton } from "../../ui/constants"
 import CustomModal from "../../ui/CustomModal/CustomModal";
-import { useNavigate } from "react-router-dom";
+import API from "../../services/common";
+import { toast } from "react-hot-toast";
 
 
 const style = {
@@ -94,6 +96,18 @@ const Onboarding = () => {
     }
 
 
+    const handeContactDetails = (e, index) => {
+        e.preventDefault()
+        dispatch({
+            type: CONTACTDETAIL,
+            payload: {
+                name: e.target.name,
+                value: e.target.value,
+                index: index
+            }
+        })
+    }
+
     const increaseContactDetails = () => {
         dispatch({
             type: INCREASECONTACTDETAILS,
@@ -112,10 +126,24 @@ const Onboarding = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         setIsLoading(true)
-        console.log(formState)
+        const onBoardUrl = sellerType === "Brand" ? "api/seller/brand/" : "api/seller/boutique/"
+        try {
+            const res = await API.post(onBoardUrl, formState)
+            if (res.status === 200) {
+                toast.success("Onboarding Successfull")
+                setIsLoading(false)
+                localStorage.setItem("isComplete", true)
+                localStorage.removeItem("userEmail")
+                localStorage.removeItem("sellerType")
+                navigate("/dashboard")
+            }
+        } catch (error) {
+            setIsLoading(false)
+            toast.error("Something went wrong")
+        }
     }
 
     const handleModalData = (item) => {
@@ -141,15 +169,26 @@ const Onboarding = () => {
         }
     }, [])
 
+    useEffect(() => {
+        if (localStorage.getItem("userEmail")) {
+            dispatch({
+                type: CONTACTDETAIL,
+                payload: {
+                    name: "email",
+                    value: localStorage.getItem("userEmail"),
+                    index: 0
+                }
+            })
+        }
+    }, [])
 
     console.log(formState)
-    console.log(formState.contactDetails)
 
     return (
         <div className="OnboardingWrapper">
             <div className="OnboardingHeader">
                 <div className="OnboardingHeaderContent">
-                    <h1>Tell Us About Your {sellerType}</h1>
+                    <h1>Tell Us About Your <span> {sellerType ? sellerType : ""}</span></h1>
                     <p>We just need to know a few more things. </p>
                     <div className="OnboardingHeaderDots">
                         <div className="headerDots"></div>
@@ -161,7 +200,7 @@ const Onboarding = () => {
             </div>
             <form onSubmit={handleSubmit} className="OnboardingInformationWrapper">
                 <div className="OnboardingGenarelInformation">
-                    <h6>{sellerType} Genarel Information</h6>
+                    <h6>{sellerType ? sellerType : ""} Genarel Information</h6>
                     <div className="OnboardingInputWrapper">
                         <div className="OnboardingLogoInputs">
                             <img src={formState?.logo || sewzeeImages.DummyLogo} alt="logo" />
@@ -172,17 +211,17 @@ const Onboarding = () => {
                         <div className="OnboardingInputs">
                             <div className="OnboardingInput">
                                 <label htmlFor="name">Name</label>
-                                <input onChange={handleGenarelInformation} type="text" name="name" id="name" placeholder={`${sellerType} Name`} required />
+                                <input onChange={handleGenarelInformation} type="text" name="name" id="name" placeholder={`${sellerType ? sellerType : ""} Name`} required />
                             </div>
                             <div className="OnboardingInput">
                                 <label htmlFor="nickname">Nick Name</label>
-                                <input onChange={handleGenarelInformation} type="text" name="nickname" id="nickname" placeholder={`${sellerType} Nick Name`} required />
+                                <input onChange={handleGenarelInformation} type="text" name="nickname" id="nickname" placeholder={`${sellerType ? sellerType : ""} Nick Name`} required />
                             </div>
                         </div>
                         <div className="OnboardingInputs">
                             <div className="OnboardingInput">
                                 <label htmlFor="tagline">Tagline</label>
-                                <input onChange={handleGenarelInformation} type="text" name="tagline" id="tagline" placeholder={`${sellerType} Tagline`} required />
+                                <input onChange={handleGenarelInformation} type="text" name="tagline" id="tagline" placeholder={`${sellerType ? sellerType : ""} Tagline`} required />
                             </div>
                             <div className="OnboardingInput">
                                 <label htmlFor="website">Website</label>
@@ -190,7 +229,7 @@ const Onboarding = () => {
                                     onChange={handleGenarelInformation} type="text"
                                     name="website"
                                     id="website"
-                                    placeholder={`${sellerType} Website`}
+                                    placeholder={`${sellerType ? sellerType : ""} Website`}
                                     required
                                 />
                             </div>
@@ -198,7 +237,7 @@ const Onboarding = () => {
                     </div>
                 </div>
                 <div className="OnboardingGenarelInformation">
-                    <h6>{sellerType} Address</h6>
+                    <h6>{sellerType ? sellerType : ""} Address</h6>
                     <div className="OnboardingInputWrapper">
 
                         <div className="OnboardingInputs">
@@ -258,28 +297,28 @@ const Onboarding = () => {
                             </div>}
                             <div className="OnboardingInputs">
                                 <div className="OnboardingInput">
-                                    <label htmlFor="firstName">Name</label>
-                                    <input type="text" name="name" id="firstName" required />
+                                    <label htmlFor="name">Name</label>
+                                    <input defaultValue={info?.name} onChange={(e) => handeContactDetails(e, index)} type="text" name="name" id="name" required />
                                 </div>
                                 <div className="OnboardingInput">
-                                    <label htmlFor="lastName">Role</label>
-                                    <input type="text" name="lastName" id="lastName" required />
+                                    <label htmlFor="role">Role</label>
+                                    <input defaultValue={info?.role} onChange={(e) => handeContactDetails(e, index)} type="text" name="role" id="role" required />
                                 </div>
                             </div>
                             <div className="OnboardingInputs">
                                 <div className="OnboardingInput">
-                                    <label htmlFor="firstName">Email</label>
-                                    <input type="text" name="name" id="firstName" required />
+                                    <label htmlFor="email">Email</label>
+                                    <input disabled={index === 0 ? true : false} defaultValue={info?.email} onChange={(e) => handeContactDetails(e, index)} type="email" name="email" id="email" required />
                                 </div>
                                 <div className="OnboardingInput">
-                                    <label htmlFor="lastName">Phone</label>
-                                    <input type="text" name="lastName" id="lastName" required />
+                                    <label htmlFor="number">Phone</label>
+                                    <input defaultValue={info?.number} onChange={(e) => handeContactDetails(e, index)} type="text" name="number" id="number" required />
                                 </div>
                             </div>
                         </div>)}
                 </div>
                 <div className="OnboardingGenarelInformation">
-                    <h6>{sellerType} Bank Details</h6>
+                    <h6>{sellerType ? sellerType : ""} Bank Details</h6>
                     <div className="OnboardingInputWrapper">
                         <div className="OnboardingInputs">
                             <div className="OnboardingInput">

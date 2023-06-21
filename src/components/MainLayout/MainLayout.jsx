@@ -22,6 +22,9 @@ const MainLayout = (props) => {
         navigate("/");
         localStorage.clear();
     };
+    const handleListClick = (url) => {
+        navigate(url);
+    };
 
     return (
         <Box sx={{ display: "flex" }}>
@@ -35,6 +38,7 @@ const MainLayout = (props) => {
                 open={open}
                 toggleDrawer={toggleDrawer}
                 classes={classes}
+                handleListClick={handleListClick}
             />
             <Box
                 component="main"

@@ -15,6 +15,7 @@ import Onboarding from "../screens/Onboarding/Onboarding";
 import { lazy } from "react";
 
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
+const Products = lazy(() => import("../screens/Products/Products"));
 
 const RouterComponent = () => {
     return (
@@ -22,6 +23,7 @@ const RouterComponent = () => {
             <Routes >
                 <Route element={<ProtectedRouter />}>
                     <Route path="/dashboard" element={<Dashboard />}></Route>
+                    <Route path="/products" element={<Products />}></Route>
                 </Route>
                 <Route element={<UnProtectedRouter />}>
                     <Route path="/" element={<Login />}></Route>
