@@ -3,6 +3,7 @@ import {
     Route,
     Routes,
 } from "react-router-dom";
+import { lazy } from "react";
 
 // routers
 import ProtectedRouter from "./ProtectedRouter/ProtectedRouter";
@@ -12,10 +13,17 @@ import UnProtectedRouter from "./UnProtectedRouter/UnProtectedRouter";
 import Login from "../screens/Login/Login";
 import SignUp from "../screens/SignUp/SignUp";
 import Onboarding from "../screens/Onboarding/Onboarding";
-import { lazy } from "react";
 
+// dashboard screens
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
+
+// products screens
 const Products = lazy(() => import("../screens/Products/Products"));
+const AddProduct = lazy(() => import("../screens/AddProduct/AddProduct"));
+const EditProduct = lazy(() => import("../screens/EditProduct/EditProduct"));
+
+
+
 
 const RouterComponent = () => {
     return (
@@ -24,6 +32,8 @@ const RouterComponent = () => {
                 <Route element={<ProtectedRouter />}>
                     <Route path="/dashboard" element={<Dashboard />}></Route>
                     <Route path="/products" element={<Products />}></Route>
+                    <Route path="/products/add" element={<AddProduct />}></Route>
+                    <Route path="/products/edit/:productId" element={<EditProduct />}></Route>
                 </Route>
                 <Route element={<UnProtectedRouter />}>
                     <Route path="/" element={<Login />}></Route>

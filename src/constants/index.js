@@ -11,3 +11,5 @@ export const sidebarList = [
         link: "/products",
     },
 ]
+
+

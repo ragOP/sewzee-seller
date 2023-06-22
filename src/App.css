@@ -5,6 +5,7 @@
     --white: #ffffff;
     --gray: #d7d2d2;
     --darkGray: #797979;
+    --succees: #00b341;
 }
 
 
@@ -42,7 +43,6 @@ input {
 ::-webkit-scrollbar {
     width: 7px;
     padding: 3px;
-    border-radius: 10px;
     height: 100px;
     scroll-behavior: smooth;
 }
@@ -51,6 +51,7 @@ input {
     width: 2px;
     padding: 5px;
     background-color: #1C1B4D;
+    border-radius: 10px;
 }
 
 input::-webkit-outer-spin-button,
