@@ -1,0 +1,275 @@
+.productImageVideosWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.productImageVideosInputs {
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.productImageVideosInput {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background-color: var(--primaryLight);
+}
+
+.productImageVideosInput label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--textBlack);
+    font-weight: 200;
+    text-transform: uppercase;
+
+}
+
+.productImageVideosInput label svg {
+    fill: #7bb1fb;
+    margin-right: 10px;
+
+}
+
+.productImageVideosInput input {
+    display: none;
+}
+
+.productImageVideosUpload {
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.productImageVideosProgressImage {
+    animation: zoomIn 0.5s ease-in-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    position: relative;
+}
+
+.productImageVideosProgressVideo {
+    animation: zoomIn 0.5s ease-in-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    position: relative;
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.productImageVideosProgressImage,
+.productImageVideosProgressVideo {
+    width: 98%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.productImageVideosProgressImage.progressClear {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.productImageVideosProgressVideo .progressClear {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.productImageVideosProgressImage .progressIcon,
+.productImageVideosProgressVideo .progressIcon {
+    padding: 5px;
+    display: flex;
+    border-radius: 5px;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+}
+
+.productImageVideosProgressImage .progressContent,
+.productImageVideosProgressVideo .progressContent {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.productImageVideosProgressImage .progressContentProg,
+.productImageVideosProgressVideo .progressContentProg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.productImageVideosProgressImage .progressContentProg span,
+.productImageVideosProgressVideo .progressContentProg span {
+    width: 100%;
+    margin-right: 15px;
+    border-radius: 5px;
+    height: 6px;
+}
+
+
+.productImageVideosPreview {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.productImageVideosPreviewTitle {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    color: var(--inputText);
+}
+
+.productImageVideosPreviewTitle {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    color: var(--inputText);
+}
+
+.productImageVideosPreviewImage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.productImageVideosPreviewImage .previewImage {
+    height: 250px;
+    width: 250px;
+    position: relative;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.productImageVideosPreviewImage .previewImage .previewDelete {
+    display: none;
+}
+
+.productImageVideosPreviewImage .previewImage .previewDelete svg {
+    fill: var(--primary);
+    width: 30px;
+    height: 30px;
+}
+
+.productImageVideosPreviewImage .previewImage:hover .previewDelete {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    animation: zoomIn 0.5s ease-in-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+
+
+.productImageVideosPreviewImage .previewImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.productImageVideosPreviewVideo .previewVideo {
+    height: 150px;
+    width: 360px;
+    position: relative;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.productImageVideosPreviewVideo .previewVideo .previewDelete {
+    display: none;
+}
+
+.productImageVideosPreviewVideo .previewVideo .videoPlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 1;
+    background-color: var(--primary);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.productImageVideosPreviewVideo .previewVideo .videoPlay svg {
+    fill: var(--white);
+    width: 30px;
+    height: 30px;
+}
+
+.productImageVideosPreviewVideo .previewVideo .previewDelete svg {
+    fill: var(--primary);
+    width: 30px;
+    height: 30px;
+}
+
+.productImageVideosPreviewVideo .previewVideo:hover .previewDelete {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    animation: zoomIn 0.5s ease-in-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+
+
+.productImageVideosPreviewVideo .previewVideo video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.previewVideoModal video{
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}

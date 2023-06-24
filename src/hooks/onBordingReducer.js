@@ -12,7 +12,9 @@ export const initialState = {
         localty: "",
         city: "",
         state: "",
-        country: ""
+        country: "",
+        lng: null,
+        lat: null
     },
     contactDetails: [
         {

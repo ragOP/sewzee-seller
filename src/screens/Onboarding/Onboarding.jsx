@@ -129,7 +129,7 @@ const Onboarding = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setIsLoading(true)
-        const onBoardUrl = sellerType === "Brand" ? "api/seller/brand/" : "api/seller/boutique/"
+        const onBoardUrl = (sellerType === "Brand" ? "api/seller/brand/" : "/api/seller/boutique/")
         try {
             const res = await API.post(onBoardUrl, formState)
             if (res.status === 200) {
@@ -176,6 +176,14 @@ const Onboarding = () => {
                 payload: {
                     name: "email",
                     value: localStorage.getItem("userEmail"),
+                    index: 0
+                }
+            })
+            dispatch({
+                type: CONTACTDETAIL,
+                payload: {
+                    name: "role",
+                    value: "Owner",
                     index: 0
                 }
             })
@@ -263,7 +271,7 @@ const Onboarding = () => {
                         <div className="OnboardingInputs">
                             <div className="OnboardingInput">
                                 <label htmlFor="pincode">Zip Code</label>
-                                <input onChange={handleAddress} type="text" name="pincode" id="pincode" placeholder="Enter Zipcode" required />
+                                <input onChange={handleAddress} type="number" name="pincode" id="pincode" placeholder="Enter Zipcode" required />
                             </div>
                             <div className="OnboardingInput">
                                 <label htmlFor="localty">Localty <small>(Optional)</small></label>
@@ -277,8 +285,8 @@ const Onboarding = () => {
                                     <input onChange={handleAddress} type="number" name="lat" id="lat" placeholder="Enter Latitude" required />
                                 </div>
                                 <div className="OnboardingInput">
-                                    <label htmlFor="long">Longitude</label>
-                                    <input onChange={handleAddress} type="number" name="long" id="long" placeholder="Enter Longitude" required />
+                                    <label htmlFor="lng">Longitude</label>
+                                    <input onChange={handleAddress} type="number" name="long" id="lng" placeholder="Enter Longitude" required />
                                 </div>
                             </div>
                         }

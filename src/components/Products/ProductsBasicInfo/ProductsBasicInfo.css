@@ -1,0 +1,126 @@
+.productsBasicInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+.productsBasicInfoTitle {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0px;
+    text-transform: uppercase;
+    color: var(--inputText);
+}
+
+.productBasicInfoInputs {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.productBasicInfoInput {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.productBasicInfoInput label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    color: var(--inputText);
+}
+
+.productBasicInfoInput input {
+    height: 30px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: transparent;
+    color: var(--textBlack);
+    outline: none;
+}
+
+.reactQuilllWrapper {
+    width: 100%;
+    height: 250px;
+}
+
+.reactQuilllWrapper .quill {
+    height: 95%;
+}
+
+.reactQuilllWrapper .ql-toolbar {
+    padding: 0 !important;
+    height: 40px !important;
+    border-top-left-radius: 3px !important;
+    border-top-right-radius: 3px !important;
+}
+
+.reactQuilllWrapper .ql-container {
+    border-bottom-left-radius: 3px !important;
+    border-bottom-right-radius: 3px !important;
+}
+
+.reactQuilllWrapper .ql-formats {
+    margin-right: 0 !important;
+}
+
+.reactQuilllWrapper .ql-formats button {
+    border-right: 1px solid var(--border) !important;
+    height: 40px !important;
+    width: 50px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.reactQuilllWrapper .ql-formats svg {
+    height: 20px !important;
+}
+
+.reactQuilllWrapper .ql-formats:nth-child(4) {
+    height: 39px !important;
+
+}
+
+.reactQuilllWrapper .ql-formats:nth-child(4) .ql-color:first-child {
+    width: 50px;
+    height: 40px;
+    border-right: 1px solid var(--border) !important;
+}
+
+.reactQuilllWrapper .ql-formats:nth-child(4) .ql-color:first-child .ql-picker-label {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+}
+
+.reactQuilllWrapper .ql-formats:nth-child(5) {
+    height: 39px !important;
+
+}
+
+.reactQuilllWrapper .ql-formats:nth-child(5) .ql-background:first-child {
+    width: 50px;
+    height: 40px;
+    border-right: 1px solid var(--border) !important;
+}
+
+.reactQuilllWrapper .ql-formats:nth-child(5) .ql-background:first-child .ql-picker-label {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+}

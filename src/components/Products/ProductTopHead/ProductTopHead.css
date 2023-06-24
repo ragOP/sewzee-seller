@@ -1,0 +1,15 @@
+.productTopHeadWrapper {
+    margin: 20px 0;
+    border-top: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+    padding: 10px;
+}
+
+.productTopHeadWrapper h6 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0px;
+    color: var(--textBlack);
+}
