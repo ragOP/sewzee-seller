@@ -278,18 +278,18 @@ const Onboarding = () => {
                                 <input onChange={handleAddress} type="text" name="localty" id="" placeholder="Enter Localty" />
                             </div>
                         </div>
-                        {sellerType === "Boutique" &&
-                            <div className="OnboardingInputs">
-                                <div className="OnboardingInput">
-                                    <label htmlFor="lat">Latitude</label>
-                                    <input onChange={handleAddress} type="number" name="lat" id="lat" placeholder="Enter Latitude" required />
-                                </div>
-                                <div className="OnboardingInput">
-                                    <label htmlFor="lng">Longitude</label>
-                                    <input onChange={handleAddress} type="number" name="long" id="lng" placeholder="Enter Longitude" required />
-                                </div>
+
+                        <div className="OnboardingInputs">
+                            <div className="OnboardingInput">
+                                <label htmlFor="lat">Latitude</label>
+                                <input onChange={handleAddress} type="number" name="lat" id="lat" placeholder="Enter Latitude" required />
                             </div>
-                        }
+                            <div className="OnboardingInput">
+                                <label htmlFor="lng">Longitude</label>
+                                <input onChange={handleAddress} type="number" name="lng" id="lng" placeholder="Enter Longitude" required />
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div className="OnboardingGenarelInformation">
