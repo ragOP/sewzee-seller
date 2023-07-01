@@ -14,7 +14,7 @@ const PageHeader = ({ headerTitle, handleClick, headerBtnName, type, handleBack 
                 <h5>{headerTitle}</h5>
             </div>
             <div className='topHeaderButtons'>
-                {type !== "back" && <CustomButton handleClick={handleClick} classId="topHeaderBtn">{headerBtnName}</CustomButton>}
+                {type !== "back" && <CustomButton handleClick={handleClick} classId="topHeaderBtn pointer">{headerBtnName}</CustomButton>}
             </div>
 
         </div>

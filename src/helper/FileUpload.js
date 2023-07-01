@@ -1,5 +1,6 @@
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase/firebase";
+import { ADDIMAGES, ADDVIDEOS } from "../hooks/constant";
 
 
 export const uploadImage = (e, setImgUrl, setPercentUpload, setIsUpload) => {
@@ -25,7 +26,7 @@ export const uploadImage = (e, setImgUrl, setPercentUpload, setIsUpload) => {
     );
 
 }
-export const uploadSingleFile = (file, setPercentUpload, setVideo, video) => {
+export const uploadSingleFile = (file, setPercentUpload, dispatch) => {
     if (!file) return;
     const sotrageRef = ref(storage, `files/${file.name}`);
     const uploadTask = uploadBytesResumable(sotrageRef, file);
@@ -50,7 +51,10 @@ export const uploadSingleFile = (file, setPercentUpload, setVideo, video) => {
         (error) => console.log(error),
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                setVideo([...video, downloadURL]);
+                dispatch({
+                    type: ADDVIDEOS,
+                    payload: downloadURL
+                });
 
                 setTimeout(() => {
                     setPercentUpload({});
@@ -61,7 +65,7 @@ export const uploadSingleFile = (file, setPercentUpload, setVideo, video) => {
     return uploadTask;
 }
 
-export const uploadMultipleFileUpload = (file, fileIndex, setPercentUpload, setImages, images) => {
+export const uploadMultipleFileUpload = (file, fileIndex, setPercentUpload, dispatch) => {
     if (!file) return;
     const sotrageRef = ref(storage, `files/${file.name}`);
     const uploadTask = uploadBytesResumable(sotrageRef, file);
@@ -85,7 +89,11 @@ export const uploadMultipleFileUpload = (file, fileIndex, setPercentUpload, setI
         (error) => console.log(error),
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                setImages((prevImages) => [...prevImages, downloadURL]);
+                dispatch({
+                    type: ADDIMAGES,
+                    payload: downloadURL
+                });
+                console.log("ADDIMAGES", downloadURL)
             });
 
             setTimeout(() => {

@@ -5,12 +5,18 @@ import { EnhancedTable } from "../../components/Table/Table"
 import { productData } from "../../dummy"
 import { productTableHeader } from "../../constants/TableHeader"
 import DeleteConfirmation from "../../components/DeleteConfirmation/DeleteConfirmation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-hot-toast"
+import API from "../../services/common"
+import { useDispatch, useSelector } from "react-redux"
+import { getApprovdProduct, getProductCategory } from "../../store/actions/productAction/productAction"
 
 
 const Products = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate();
+    const { products } = useSelector(state => state)
     const [isModalOpen, setModalOpen] = useState(false);
     const handleClose = () => setModalOpen(false);
     const handleShow = () => setModalOpen(true);
@@ -40,6 +46,13 @@ const Products = () => {
 
 
 
+    useEffect(() => {
+        dispatch(getProductCategory())
+        dispatch(getApprovdProduct())
+    }, [])
+
+
+
     return (
         <div className="productWrapper">
             <PageHeader
@@ -50,7 +63,7 @@ const Products = () => {
             <div className="productTableWtapper">
                 <EnhancedTable
                     tableHeader={productTableHeader}
-                    tableData={productData}
+                    tableData={products?.products}
                     tableTitle="Products"
                     handleDelete={handleDeleteClick}
                     deleteModalOpen={setModalOpen}

@@ -1,5 +1,8 @@
 // const columns = ["Name", "Company", "City", "State"];
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import API from "../services/common";
+import { toast } from "react-hot-toast";
 
 export const productTableHeader = [
     {
@@ -7,6 +10,7 @@ export const productTableHeader = [
         label: "Product Image",
         options: {
             customBodyRender: (value) => {
+                console.log(value)
                 return <img className="tableImage" src={value} alt="Image" width="50" height="50" />;
             },
             filter: false,
@@ -33,8 +37,10 @@ export const productTableHeader = [
         name: "productCategory",
         label: "Product Category",
         options: {
+            
             filter: true,
             sort: true,
+
         }
     },
     {
@@ -50,7 +56,7 @@ export const productTableHeader = [
         label: "Action",
         options: {
             customBodyRender: (value) => {
-
+                console.log(value)
                 return (
                     <div className="actionWrapper">
                         <Link to={`/products/edit/${value}`} className="actionBtn">Edit</Link>

@@ -16,6 +16,7 @@ import "./ProductImageVideos.css"
 import FileInputs from '../../FileInputs/FileInputs';
 import { uploadMultipleFileUpload, uploadSingleFile } from '../../../helper/FileUpload';
 import CustomModal from '../../../ui/CustomModal/CustomModal';
+import { REMOVEIMAGES, REMOVEVIDEOS } from '../../../hooks/constant';
 
 
 const style = {
@@ -32,12 +33,10 @@ const style = {
 };
 
 
-const ProductImageVideos = () => {
+const ProductImageVideos = ({ formState, dispatch }) => {
     const [show, setShow] = useState(false);
     const handleOpen = () => setShow(true);
     const handleClose = () => setShow(false);
-    const [images, setImages] = useState([]);
-    const [videos, setVideos] = useState([]);
     const [singleVideo, setSingleVideo] = useState('');
     const [ImageData, setImageData] = useState([]);
     const [videoData, setVideoData] = useState({});
@@ -51,14 +50,14 @@ const ProductImageVideos = () => {
         }
 
         arr.forEach((item, index) => {
-            uploadMultipleFileUpload(item, index, setImageData, setImages, images);
+            uploadMultipleFileUpload(item, index, setImageData, dispatch);
         });
     }
 
     // single file upload(Videos)
     const handleSingleChange = (e) => {
         const item = e.target.files;
-        uploadSingleFile(item[0], setVideoData, setVideos, videos)
+        uploadSingleFile(item[0], setVideoData, dispatch)
     }
 
     // cancel file upload
@@ -79,11 +78,19 @@ const ProductImageVideos = () => {
 
     // delete image
     const deleteImage = (index) => {
-        setImages((prevImageData) =>
-            prevImageData.filter((item, i) => i !== index)
-        );
+        dispatch({
+            type: REMOVEIMAGES,
+            payload: index
+        })
     }
 
+    // delete video
+    const deleteVideo = (index) => {
+        dispatch({
+            type: REMOVEVIDEOS,
+            payload: index
+        })
+    }
 
 
 
@@ -154,12 +161,12 @@ const ProductImageVideos = () => {
                         </div>}
                 </div>
             </div >
-            {(images.length > 0 || videos.length > 0) &&
+            {(formState?.images?.length > 0 || formState?.videos?.length > 0) &&
                 <div className="productImageVideosPreview">
                     <div className="productImageVideosPreviewImage">
-                        {images.length > 0 && <h6 className="productImageVideosPreviewTitle">Images</h6>}
+                        {formState?.images?.length > 0 && <h6 className="productImageVideosPreviewTitle">Images</h6>}
                         <div className={`flexAlignCenter width100 flexWarp`}>
-                            {images.length > 0 && images.map((item, index) =>
+                            {formState?.images?.length > 0 && formState?.images?.map((item, index) =>
                                 <div key={index} className='previewImage'>
                                     <img src={item} alt="" />
                                     <div className='previewDelete'>
@@ -169,13 +176,13 @@ const ProductImageVideos = () => {
                         </div>
                     </div>
                     <div className="productImageVideosPreviewVideo">
-                        {videos.length > 0 && <h6 className="productImageVideosPreviewTitle">Videos</h6>}
+                        {formState?.videos.length > 0 && <h6 className="productImageVideosPreviewTitle">Videos</h6>}
                         <div className={`flexAlignCenter width100 flexWarp`}>
-                            {videos.length > 0 && videos.map((item, index) =>
+                            {formState?.videos.length > 0 && formState?.videos.map((item, index) =>
                                 <div key={index} className='previewVideo'>
                                     <video src={item}></video>
                                     <div className='previewDelete'>
-                                        <DeleteForeverIcon onClick={() => deleteImage(index)} />
+                                        <DeleteForeverIcon onClick={() => deleteVideo(index)} />
                                     </div>
                                     <div className='videoPlay'>
                                         <PlayArrowIcon onClick={() => { handleOpen(); setSingleVideo(item) }} />

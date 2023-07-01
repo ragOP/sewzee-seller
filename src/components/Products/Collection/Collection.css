@@ -1,0 +1,4 @@
+.collectionWrapper {
+    display: flex;
+    flex-direction: column;
+}

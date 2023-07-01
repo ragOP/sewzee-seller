@@ -1,0 +1,115 @@
+.categoryWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.categoryContainer {
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+
+.categoryOptions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background-color: var(--primaryLight);
+    cursor: pointer;
+}
+
+
+.categoryOptions p {
+    font-size: 14px;
+    color: var(--textBlack);
+    font-weight: 200;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+}
+
+.categoryActive {
+    background-color: var(--primary);
+}
+
+.categoryActive p {
+    color: var(--white);
+}
+
+.chooseCategoryBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.chooseCategoryBox label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    color: var(--inputText);
+}
+
+.chooseCategoryInput select {
+    height: 30px;
+    width: 20%;
+    border-radius: 3px;
+    padding: 0 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--textBlack);
+    outline: none;
+}
+
+.createCategory {
+    display: flex;
+    align-items: flex-end;
+}
+
+.createCategoryBox {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.createCategoryBox label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    color: var(--inputText);
+}
+
+.createCategoryBox input {
+    height: 30px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: transparent;
+    color: var(--textBlack);
+    outline: none;
+}
+
+.createCategoryBtn {
+    height: 30px;
+    width: 15%;
+    margin-left: 20px;
+    border: none;
+    border-radius: 3px;
+    padding: 0 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: var(--primary);
+    color: var(--white);
+}

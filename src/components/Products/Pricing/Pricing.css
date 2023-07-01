@@ -1,0 +1,58 @@
+.pricingWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.pricingInputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.pricingInputBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.onSaleCheckbox label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    color: var(--inputText);
+}
+
+.pricingInputBox label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    color: var(--inputText);
+}
+
+.pricingInput {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0 5px;
+}
+
+.pricingInput input {
+    height: 30px;
+    border: none;
+    border-radius: none;
+    padding: 0 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: transparent;
+    color: var(--textBlack);
+    outline: none;
+}

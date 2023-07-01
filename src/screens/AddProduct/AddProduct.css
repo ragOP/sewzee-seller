@@ -1,3 +1,17 @@
 .addProductWrapper {
     padding: 20px;
 }
+
+.addProductBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addProductBtn button {
+    margin-top: 20px;
+    height: 40px;
+    width: 15%;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+}
