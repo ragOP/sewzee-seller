@@ -15,6 +15,7 @@ import { CustomButton } from "../../ui/constants"
 import CustomModal from "../../ui/CustomModal/CustomModal";
 import API from "../../services/common";
 import { toast } from "react-hot-toast";
+import MapContainer from "../../components/MapContainer/MapContainer";
 
 
 const style = {
@@ -36,8 +37,10 @@ const Onboarding = () => {
     const isComplete = localStorage.getItem("isComplete")
     const imgref = useRef(null)
     const [open, setOpen] = useState(false)
+    const [mapOpen, setMapOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const handleMapOpen = () => setMapOpen(true)
     const [percentUpload, setPercentUpload] = useState(0)
     const [isUploading, setIsUploading] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -141,8 +144,14 @@ const Onboarding = () => {
                 navigate("/dashboard")
             }
         } catch (error) {
-            setIsLoading(false)
-            toast.error("Something went wrong")
+            if (error.response.data.message === "err SequelizeDatabaseError: Invalid GIS data provided to function st_geomfromtext.") {
+                toast.error("Please select a valid location")
+                setIsLoading(false)
+                handleMapOpen()
+            } else {
+                setIsLoading(false)
+                toast.error(error.response.data.message)
+            }
         }
     }
 
@@ -214,7 +223,7 @@ const Onboarding = () => {
                             <img src={formState?.logo || sewzeeImages.DummyLogo} alt="logo" />
                             <label
                                 onClick={() => imgref.current.click()} className="onboardingLogoUploadBtn"> {isUploading ? percentUpload : formState?.logo ? "Upload Again" : "Upload"}</label>
-                            <input onChange={handleUpload} type="file" ref={imgref} hidden />
+                            <input required onChange={handleUpload} type="file" ref={imgref} hidden />
                         </div>
                         <div className="OnboardingInputs">
                             <div className="OnboardingInput">
@@ -281,14 +290,17 @@ const Onboarding = () => {
 
                         <div className="OnboardingInputs">
                             <div className="OnboardingInput">
-                                <label htmlFor="lat">Latitude</label>
-                                <input onChange={handleAddress} type="number" name="lat" id="lat" placeholder="Enter Latitude" required />
+                                <label htmlFor="lat">Latitude <small onClick={handleMapOpen}>Select Latitude </small></label>
+                                <input onChange={handleAddress} disabled value={formState?.address?.lat} type="number" name="lat" id="lat" placeholder="Enter Latitude" required />
                             </div>
                             <div className="OnboardingInput">
-                                <label htmlFor="lng">Longitude</label>
-                                <input onChange={handleAddress} type="number" name="lng" id="lng" placeholder="Enter Longitude" required />
+                                <label htmlFor="lng">Longitude <small onClick={handleMapOpen}>Select Longitude</small></label>
+                                <input onChange={handleAddress} disabled value={formState?.address?.lng} type="number" name="lng" id="lng" placeholder="Enter Longitude" required />
                             </div>
                         </div>
+                        {mapOpen && <div className="onbordingMap">
+                            <MapContainer dispatch={dispatch} />
+                        </div>}
 
                     </div>
                 </div>
@@ -386,6 +398,9 @@ const Onboarding = () => {
                     </div>
                 </Box>
             </CustomModal>
+
+
+
         </div >
     )
 }

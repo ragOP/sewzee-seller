@@ -139,6 +139,29 @@
     box-shadow: none !important;
 }
 
+.OnboardingInput small {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 18px;
+    color: var(--black);
+    margin-bottom: 5px;
+    box-shadow: none !important;
+    cursor: pointer;
+}
+
+.OnboardingInput label {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--black);
+    margin-bottom: 5px;
+    box-shadow: none !important;
+}
+
 .OnboardingInput input {
     height: 40px;
     outline: none;
@@ -210,3 +233,17 @@
     height: 30px;
     margin-right: 10px;
 }
+
+.onbordingMap {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+
+/* .onbordingMap div div:first-child {
+    width: 69% !important;
+} */

@@ -37,7 +37,7 @@ export const productTableHeader = [
         name: "productCategory",
         label: "Product Category",
         options: {
-            
+
             filter: true,
             sort: true,
 
@@ -59,10 +59,13 @@ export const productTableHeader = [
                 console.log(value)
                 return (
                     <div className="actionWrapper">
-                        <Link to={`/products/edit/${value}`} className="actionBtn">Edit</Link>
+                        <Link to={`/products`} className="actionBtn">Edit</Link>
+                        {/* kk<p className="actionBtn">Edit</p> */}
                         {/* <button  className="actionBtn">Edit</button> */}
                     </div>
                 );
+
+
             },
             filter: false,
             sort: false,

@@ -1,4 +1,4 @@
-import { ADDRESS, BANKDETAILS, CONTACTDETAIL, GENARELINFORMATION, INCREASECONTACTDETAILS, LOGO } from "./constant";
+import { ADDRESS, BANKDETAILS, CONTACTDETAIL, GENARELINFORMATION, INCREASECONTACTDETAILS, LOGO, SETLATLNG } from "./constant";
 
 export const initialState = {
     name: "",
@@ -53,6 +53,16 @@ const OnboardingReducer = (state = initialState, action) => {
                 address: {
                     ...state.address,
                     [name]: value
+                }
+            }
+        case SETLATLNG:
+            console.log(action.payload)
+            return {
+                ...state,
+                address: {
+                    ...state.address,
+                    lng: action.payload.lng,
+                    lat: action.payload.lat
                 }
             }
         case INCREASECONTACTDETAILS:
