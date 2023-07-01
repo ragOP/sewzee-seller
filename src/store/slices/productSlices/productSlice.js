@@ -3,8 +3,9 @@ import { getApprovdProduct, getProductCategory } from "../../actions/productActi
 
 const initialState = {
     products: [],
+    productList: [],
     category: [],
-    collection:[],
+    collection: [],
     error: {
         isError: false,
         msg: "",
@@ -38,7 +39,7 @@ export const productSlice = createSlice({
             // console.log(JSON?.parse(data?.data))   
             state.category = data.category;
             state.collection = data.collection;
-            
+
             state.error = {
                 isError: false,
                 msg: "",
@@ -62,6 +63,7 @@ export const productSlice = createSlice({
         });
         builder.addCase(getApprovdProduct.fulfilled, (state, action) => {
             const data = action.payload;
+            state.productList = data.data;
             // console.log(JSON?.parse(data?.data))   
             const convertData = data.data.map((item) => {
                 const images = JSON.parse(item.images);
