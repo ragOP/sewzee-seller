@@ -23,3 +23,7 @@ export const SEOTAG = "SEOTAG";
 export const ADDMORETAGS = "ADDMORETAGS";
 
 
+// onBordingReducer
+
+export const ADDONBOARDIMAGES = "ADDONBOARDIMAGES";
+export const ADDONBOARDVIDEOS = "ADDONBOARDVIDEOS";

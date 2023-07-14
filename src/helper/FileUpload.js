@@ -1,6 +1,6 @@
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase/firebase";
-import { ADDIMAGES, ADDVIDEOS } from "../hooks/constant";
+import { ADDIMAGES, ADDONBOARDIMAGES, ADDONBOARDVIDEOS, ADDVIDEOS } from "../hooks/constant";
 
 
 export const uploadImage = (e, setImgUrl, setPercentUpload, setIsUpload) => {
@@ -26,7 +26,7 @@ export const uploadImage = (e, setImgUrl, setPercentUpload, setIsUpload) => {
     );
 
 }
-export const uploadSingleFile = (file, setPercentUpload, dispatch) => {
+export const uploadSingleFile = (file, setPercentUpload, dispatch, isOnboard) => {
     if (!file) return;
     const sotrageRef = ref(storage, `files/${file.name}`);
     const uploadTask = uploadBytesResumable(sotrageRef, file);
@@ -51,8 +51,9 @@ export const uploadSingleFile = (file, setPercentUpload, dispatch) => {
         (error) => console.log(error),
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                // condition for onboard  and addproduct image upload
                 dispatch({
-                    type: ADDVIDEOS,
+                    type: isOnboard ? ADDONBOARDVIDEOS : ADDVIDEOS,
                     payload: downloadURL
                 });
 
@@ -65,7 +66,7 @@ export const uploadSingleFile = (file, setPercentUpload, dispatch) => {
     return uploadTask;
 }
 
-export const uploadMultipleFileUpload = (file, fileIndex, setPercentUpload, dispatch) => {
+export const uploadMultipleFileUpload = (file, fileIndex, setPercentUpload, dispatch, isOnboard) => {
     if (!file) return;
     const sotrageRef = ref(storage, `files/${file.name}`);
     const uploadTask = uploadBytesResumable(sotrageRef, file);
@@ -89,8 +90,9 @@ export const uploadMultipleFileUpload = (file, fileIndex, setPercentUpload, disp
         (error) => console.log(error),
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                // condition for onboard  and addproduct image upload
                 dispatch({
-                    type: ADDIMAGES,
+                    type: isOnboard ? ADDONBOARDIMAGES : ADDIMAGES,
                     payload: downloadURL
                 });
                 console.log("ADDIMAGES", downloadURL)
@@ -99,7 +101,8 @@ export const uploadMultipleFileUpload = (file, fileIndex, setPercentUpload, disp
             setTimeout(() => {
                 setPercentUpload((prevData) => {
                     const updatedData = [...prevData];
-                    updatedData.splice(fileIndex, 1); // Remove the uploaded file from the array
+                    // Remove the uploaded file from the array
+                    updatedData.splice(fileIndex, 1);
                     return updatedData;
                 });
             }, 1000);

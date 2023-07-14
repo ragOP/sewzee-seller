@@ -16,6 +16,7 @@ import CustomModal from "../../ui/CustomModal/CustomModal";
 import API from "../../services/common";
 import { toast } from "react-hot-toast";
 import MapContainer from "../../components/MapContainer/MapContainer";
+import ProductImageVideos from "../../components/Products/ProductImageVideos/ProductImageVideos";
 
 
 const style = {
@@ -132,6 +133,17 @@ const Onboarding = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setIsLoading(true)
+        if (formState.logo === "") {
+            toast.error("Please upload logo")
+            setIsLoading(false)
+            return
+        }
+        if (formState?.address?.lng === "" || formState?.address?.lat === "") {
+            toast.error("Please select a valid location")
+            setIsLoading(false)
+            handleMapOpen()
+            return
+        }
         const onBoardUrl = (sellerType === "Brand" ? "api/seller/brand/" : "/api/seller/boutique/")
         try {
             const res = await API.post(onBoardUrl, formState)
@@ -223,7 +235,7 @@ const Onboarding = () => {
                             <img src={formState?.logo || sewzeeImages.DummyLogo} alt="logo" />
                             <label
                                 onClick={() => imgref.current.click()} className="onboardingLogoUploadBtn"> {isUploading ? percentUpload : formState?.logo ? "Upload Again" : "Upload"}</label>
-                            <input required onChange={handleUpload} type="file" ref={imgref} hidden />
+                            <input onChange={handleUpload} type="file" ref={imgref} hidden />
                         </div>
                         <div className="OnboardingInputs">
                             <div className="OnboardingInput">
@@ -251,7 +263,17 @@ const Onboarding = () => {
                                 />
                             </div>
                         </div>
+
+                        <div className="OnboardingInput width100">
+                            <label htmlFor="tagline">Description</label>
+                            <textarea className="" onChange={handleGenarelInformation} type="text" name="description" id="description" placeholder={`${sellerType ? sellerType : ""} Description`} required rows="7" cols="33" />
+                        </div>
+
                     </div>
+                </div>
+                <div className="OnboardingGenarelInformation">
+                    <h6>{sellerType ? sellerType : ""} Image & Videos</h6>
+                    <ProductImageVideos formState={formState} dispatch={dispatch} isOnboard={true} />
                 </div>
                 <div className="OnboardingGenarelInformation">
                     <h6>{sellerType ? sellerType : ""} Address</h6>
@@ -304,6 +326,7 @@ const Onboarding = () => {
 
                     </div>
                 </div>
+
                 <div className="OnboardingGenarelInformation">
                     <div className="OnboardContactTitle">
                         <h6>Contact Details</h6>

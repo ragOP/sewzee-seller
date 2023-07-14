@@ -1,4 +1,4 @@
-import { ADDRESS, BANKDETAILS, CONTACTDETAIL, GENARELINFORMATION, INCREASECONTACTDETAILS, LOGO, SETLATLNG } from "./constant";
+import { ADDONBOARDIMAGES, ADDONBOARDVIDEOS, ADDRESS, BANKDETAILS, CONTACTDETAIL, GENARELINFORMATION, INCREASECONTACTDETAILS, LOGO, REMOVEIMAGES, REMOVEVIDEOS, SETLATLNG } from "./constant";
 
 export const initialState = {
     name: "",
@@ -6,6 +6,7 @@ export const initialState = {
     tagline: "",
     logo: "",
     website: "",
+    description: "",
     address: {
         pincode: null,
         address: "",
@@ -24,6 +25,8 @@ export const initialState = {
             role: ""
         }
     ],
+    images: [],
+    videos: [],
     bankDetails: {
         account_no: "",
         ifsc_code: "",
@@ -46,7 +49,26 @@ const OnboardingReducer = (state = initialState, action) => {
                 ...state,
                 [name]: value
             }
-
+        case ADDONBOARDIMAGES:
+            return {
+                ...state,
+                images: [...state.images, action.payload]
+            }
+        case REMOVEIMAGES:
+            return {
+                ...state,
+                images: state.images.filter((item, index) => index !== action.payload)
+            }
+        case ADDONBOARDVIDEOS:
+            return {
+                ...state,
+                videos: [...state.videos, action.payload]
+            }
+        case REMOVEVIDEOS:
+            return {
+                ...state,
+                videos: state.videos.filter((item, index) => index !== action.payload)
+            }
         case ADDRESS:
             return {
                 ...state,

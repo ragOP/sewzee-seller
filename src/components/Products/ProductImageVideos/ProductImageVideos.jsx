@@ -33,7 +33,7 @@ const style = {
 };
 
 
-const ProductImageVideos = ({ formState, dispatch }) => {
+const ProductImageVideos = ({ formState, dispatch, isOnboard }) => {
     const [show, setShow] = useState(false);
     const handleOpen = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -50,14 +50,14 @@ const ProductImageVideos = ({ formState, dispatch }) => {
         }
 
         arr.forEach((item, index) => {
-            uploadMultipleFileUpload(item, index, setImageData, dispatch);
+            uploadMultipleFileUpload(item, index, setImageData, dispatch, isOnboard);
         });
     }
 
     // single file upload(Videos)
     const handleSingleChange = (e) => {
         const item = e.target.files;
-        uploadSingleFile(item[0], setVideoData, dispatch)
+        uploadSingleFile(item[0], setVideoData, dispatch, isOnboard)
     }
 
     // cancel file upload
@@ -167,7 +167,7 @@ const ProductImageVideos = ({ formState, dispatch }) => {
                         {formState?.images?.length > 0 && <h6 className="productImageVideosPreviewTitle">Images</h6>}
                         <div className={`flexAlignCenter width100 flexWarp`}>
                             {formState?.images?.length > 0 && formState?.images?.map((item, index) =>
-                                <div key={index} className='previewImage'>
+                                <div key={index} className={`previewImage ${isOnboard && "previewImageOnBord"}`}>
                                     <img src={item} alt="" />
                                     <div className='previewDelete'>
                                         <DeleteForeverIcon onClick={() => deleteImage(index)} />
@@ -179,7 +179,7 @@ const ProductImageVideos = ({ formState, dispatch }) => {
                         {formState?.videos.length > 0 && <h6 className="productImageVideosPreviewTitle">Videos</h6>}
                         <div className={`flexAlignCenter width100 flexWarp`}>
                             {formState?.videos.length > 0 && formState?.videos.map((item, index) =>
-                                <div key={index} className='previewVideo'>
+                                <div key={index} className={`previewVideo ${isOnboard && "previewVideoOnBord"}`}>
                                     <video src={item}></video>
                                     <div className='previewDelete'>
                                         <DeleteForeverIcon onClick={() => deleteVideo(index)} />
