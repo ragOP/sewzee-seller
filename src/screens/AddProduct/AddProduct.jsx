@@ -59,7 +59,7 @@ const AddProduct = () => {
             <Category formState={formState} dispatch={dispatch} />
             <ProductTopHead title="Collection" />
             <Collection formState={formState} dispatch={dispatch} />
-            <ProductTopHead title="Pricing and Dicount" />
+            <ProductTopHead title="Pricing and Discount" />
             <Pricing formState={formState} dispatch={dispatch} />
 
             <Variants formState={formState} dispatch={dispatch} />

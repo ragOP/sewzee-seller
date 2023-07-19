@@ -12,6 +12,8 @@
     "@reduxjs/toolkit": "^1.9.5",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
+    "color-convert": "^2.0.1",
+    "color-name": "^2.0.0",
     "firebase": "^9.22.2",
     "google-maps-react": "^2.0.6",
     "mui-datatables": "^4.3.0",

@@ -15,7 +15,7 @@ const Collection = ({ formState, dispatch }) => {
 
     const loadCategory = async () => {
         try {
-            const res = await API.get("/api/seller/list");
+            const res = await API.get("/api/seller/collection");
             setCollectionList(res?.data?.collection)
         } catch (error) {
             toast.error(error?.response?.data?.message);
@@ -86,7 +86,7 @@ const Collection = ({ formState, dispatch }) => {
                             <input onChange={(e) => setNewCollection(e.target.value)} type="text" placeholder="Enter Collection Name" />
                         </div>
                     </div>
-                    <CustomButton handleClick={handleCreateCollection} classId={`createCategoryBtn pointer`}>{isLoading ? <CircularProgress sx={{ color: "white" }}
+                    <CustomButton handleClick={handleCreateCollection} classId={`createCategoryBtn1 pointer`}>{isLoading ? <CircularProgress sx={{ color: "white" }}
                         size={20} /> : "Add New Collection"}</CustomButton>
                 </div>
             }

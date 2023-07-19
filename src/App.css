@@ -74,6 +74,11 @@ input[type=number] {
     cursor: pointer;
 }
 
+
+.flex {
+    display: flex !important;
+}
+
 .flexAlignCenter {
     display: flex;
     align-items: center;
@@ -149,6 +154,9 @@ input[type=number] {
 
 /* Margin style */
 
+.marginX5 {
+    margin: 0 5px !important;
+}
 
 .marginX10 {
     margin: 0 10px;
@@ -190,6 +198,10 @@ input[type=number] {
     margin-right: 10px;
 }
 
+.marginRight15 {
+    margin-right: 15px !important;
+}
+
 .marginRight20 {
     margin-right: 20px;
 }
@@ -214,6 +226,10 @@ input[type=number] {
     margin-bottom: 0px !important;
 }
 
+.padding0 {
+    padding: 0 !important;
+}
+
 .paddingSt0 {
     padding-left: 0 !important;
 }
@@ -233,10 +249,16 @@ input[type=number] {
 .displayNone {
     display: none !important;
 }
-.visibilityNone{
+
+.visibilityNone {
     visibility: hidden;
 }
 
+/* Gap */
+
+.gap0 {
+    gap: 0 !important;
+}
 
 /* width */
 
@@ -245,5 +267,17 @@ input[type=number] {
 }
 
 .width50 {
-    width: 50%;
+    width: 50% !important;
+}
+
+.width20 {
+    width: 20% !important;
+}
+
+.width22 {
+    width: 22% !important;
+}
+
+.width10 {
+    width: 10% !important;
 }

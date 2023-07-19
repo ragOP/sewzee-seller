@@ -38,9 +38,16 @@
     color: var(--white);
 }
 
+.chooseCategory {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
 .chooseCategoryBox {
     display: flex;
     flex-direction: column;
+    width: 40%;
 }
 
 .chooseCategoryBox label {
@@ -52,9 +59,11 @@
     color: var(--inputText);
 }
 
+
+
 .chooseCategoryInput select {
     height: 30px;
-    width: 20%;
+    width: 80%;
     border-radius: 3px;
     padding: 0 10px;
     font-style: normal;
@@ -65,9 +74,32 @@
     outline: none;
 }
 
+.chooseCategoryInput div:first-child {
+    width: 100%;
+}
+
+
 .createCategory {
     display: flex;
+    width: 65%;
     align-items: flex-end;
+}
+
+.muiInput input {
+    padding: 11.6px 14px !important;
+}
+
+.categoryInfoIcon {
+    display: flex;
+    align-items: center;
+}
+
+.categoryInfoIcon svg {
+    margin-left: 5px;
+    height: 18px;
+    width: 18px;
+    fill: var(--primary);
+    cursor: pointer;
 }
 
 .createCategoryBox {
@@ -100,8 +132,8 @@
 }
 
 .createCategoryBtn {
-    height: 30px;
-    width: 15%;
+    height: 55px;
+    width: 20%;
     margin-left: 20px;
     border: none;
     border-radius: 3px;
@@ -112,4 +144,23 @@
     line-height: 24px;
     background-color: var(--primary);
     color: var(--white);
+}
+
+.createCategoryBtn1 {
+    height: 30px;
+    width: 20%;
+    margin-left: 20px;
+    border: none;
+    border-radius: 3px;
+    padding: 0 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.createNewCategoryItem {
+    color: var(--primary) !important;
 }

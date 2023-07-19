@@ -6,9 +6,18 @@
 
 .pricingInputs {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 20px;
+    /* align-items: center; */
     margin: 10px 0;
+}
+
+.pricingInputs label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    color: var(--inputText);
 }
 
 .pricingInputBox {
@@ -16,12 +25,53 @@
     flex-direction: column;
 }
 
+.onSaleInfoIcon {
+    display: flex;
+    align-items: center;
+}
+
+.onSaleInfoIcon svg {
+    margin-left: 5px;
+    width: 18px !important;
+    height: 18px !important;
+    fill: var(--primary);
+    cursor: pointer;
+}
+
+.discountIcon {
+    display: flex;
+    align-items: center;
+    background-color: var(--primaryLight);
+    height: 30px;
+    padding: 0 10px;
+}
+
+.discountIcon span {
+
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.discountIconActive {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.onSaleCheckbox {
+    display: flex;
+    align-items: center;
+}
+
 .onSaleCheckbox label {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 0px !important;
     color: var(--inputText);
 }
 

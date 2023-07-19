@@ -32,3 +32,9 @@
     color: var(--primary);
     cursor: pointer;
 }
+
+.closeIcon {
+    margin-left: 10px;
+    fill: var(--primary);
+    cursor: pointer;
+}

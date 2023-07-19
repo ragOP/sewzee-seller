@@ -1,7 +1,7 @@
 
 
 const FileInputs = ({ item }) => {
-    
+    console.log(item)
     return (
         <div className='productImageVideosInput marginRight20'>
             <label
