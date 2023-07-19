@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getApprovdProduct, getProductCategory } from "../../actions/productAction/productAction";
+import {
+    getApprovdProduct,
+    getProductCategory,
+} from "../../actions/productAction/productAction";
 
 const initialState = {
     products: [],
@@ -23,7 +26,7 @@ export const productSlice = createSlice({
                 isError: false,
                 msg: "",
             };
-        }
+        },
     },
     extraReducers: (builder) => {
         // dashboard reducers
@@ -36,7 +39,7 @@ export const productSlice = createSlice({
         });
         builder.addCase(getProductCategory.fulfilled, (state, action) => {
             const data = action.payload;
-            // console.log(JSON?.parse(data?.data))   
+            // console.log(JSON?.parse(data?.data))
             state.category = data.category;
             state.collection = data.collection;
 
@@ -63,21 +66,22 @@ export const productSlice = createSlice({
         });
         builder.addCase(getApprovdProduct.fulfilled, (state, action) => {
             const data = action.payload;
-            state.productList = data.data;
-            // console.log(JSON?.parse(data?.data))   
+            state.productList = data?.data;
+            // console.log(JSON?.parse(data?.data))
             const convertData = data.data.map((item) => {
-                const images = JSON.parse(item.images);
-                const findcategory = state.category.find((item) => item?.id === item?.category);
-                console.log(findcategory)
+                // const images = JSON.parse(item.images);
+                const findcategory = state.category.find(
+                    (item) => item?.id === item?.category
+                );
+                console.log(findcategory);
                 return [
-                    images[0],
+                    item.images,
                     item?.name,
                     item?.price,
                     item?.category,
                     item?.instock === 1 ? "Yes" : "No",
-                    item.id
+                    item.id,
                 ];
-
             });
             const productData = convertData.map((item) => ({
                 productImage: item[0],
@@ -85,9 +89,9 @@ export const productSlice = createSlice({
                 productPrice: item[2],
                 productCategory: item[3],
                 productInStock: item[4],
-                action: item[5]
+                action: item[5],
             }));
-            state.products = productData
+            state.products = productData;
             state.error = {
                 isError: false,
                 msg: "",
@@ -101,7 +105,6 @@ export const productSlice = createSlice({
             };
             state.isLoading = false;
         });
-
     },
 });
 
