@@ -63,8 +63,10 @@ const Topbar = ({ open, toggleDrawer, handleLogout }) => {
                         Profile
                     </button>
                 </div>
-                <div className="">
-                    <button className="topbarLogoutbtn">Log out</button>
+                <div>
+                    <button onClick={handleLogout} className="topbarLogoutbtn">
+                        Log out
+                    </button>
                 </div>
             </Toolbar>
         </AppBar>
