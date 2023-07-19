@@ -1,14 +1,14 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Products.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { EnhancedTable } from "../../components/Table/Table";
 
-import { productData } from "../../dummy";
+
 import { productTableHeader } from "../../constants/TableHeader";
 import DeleteConfirmation from "../../components/DeleteConfirmation/DeleteConfirmation";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
-import API from "../../services/common";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
     getApprovdProduct,

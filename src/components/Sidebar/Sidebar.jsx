@@ -1,11 +1,19 @@
-
 import { styled } from "@mui/material/styles";
-import { Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar } from "@mui/material"
+import {
+    Divider,
+    IconButton,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Toolbar,
+} from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import Inventory2Icon from '@mui/icons-material/Inventory2';
+import Inventory2Icon from "@mui/icons-material/Inventory2";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { sewzeeImages } from "../../assets";
 import { sidebarList } from "../../constants";
@@ -44,48 +52,87 @@ const Drawer = styled(MuiDrawer, {
     },
 }));
 
-
 const IconHandaler = (title, type) => {
     let icon;
 
     switch (title) {
         case "Dashboard":
-            icon = type ? <DashboardIcon style={{
-                color: "white",
-                fontSize: "1.8rem",
-            }} /> : <DashboardIcon style={{
-                color: "black",
-                fontSize: "1.8rem",
-            }} />
+            icon = type ? (
+                <DashboardIcon
+                    style={{
+                        color: "white",
+                        fontSize: "1.8rem",
+                    }}
+                />
+            ) : (
+                <DashboardIcon
+                    style={{
+                        color: "black",
+                        fontSize: "1.8rem",
+                    }}
+                />
+            );
             break;
         case "Users":
-            icon = type ? <AccountCircleIcon style={{
-                color: "white",
-                fontSize: "1.8rem",
-            }} /> : <AccountCircleIcon style={{
-                color: "black",
-                fontSize: "1.8rem",
-            }} />
+            icon = type ? (
+                <AccountCircleIcon
+                    style={{
+                        color: "white",
+                        fontSize: "1.8rem",
+                    }}
+                />
+            ) : (
+                <AccountCircleIcon
+                    style={{
+                        color: "black",
+                        fontSize: "1.8rem",
+                    }}
+                />
+            );
             break;
         case "Products":
-            icon = type ? <Inventory2Icon style={{
-                color: "white",
-                fontSize: "1.8rem",
-            }} /> : <Inventory2Icon style={{
-                color: "black",
-                fontSize: "1.8rem",
-            }} />
+            icon = type ? (
+                <Inventory2Icon
+                    style={{
+                        color: "white",
+                        fontSize: "1.8rem",
+                    }}
+                />
+            ) : (
+                <Inventory2Icon
+                    style={{
+                        color: "black",
+                        fontSize: "1.8rem",
+                    }}
+                />
+            );
+            break;
+        case "Orders":
+            icon = type ? (
+                <ShoppingCartIcon
+                    style={{
+                        color: "white",
+                        fontSize: "1.8rem",
+                    }}
+                />
+            ) : (
+                <ShoppingCartIcon
+                    style={{
+                        color: "black",
+                        fontSize: "1.8rem",
+                    }}
+                />
+            );
             break;
         default:
             break;
     }
 
-    return icon
-}
-
+    return icon;
+};
 
 const Sidebar = ({ toggleDrawer, open, classes, handleListClick }) => {
-    const location = window.location.pathname
+    const location = window.location.pathname;
 
     return (
         <Drawer variant="permanent" open={open}>
@@ -102,19 +149,15 @@ const Sidebar = ({ toggleDrawer, open, classes, handleListClick }) => {
                     <img src={sewzeeImages.sewzeeLogo} alt="" />
                 </div>
                 <IconButton onClick={toggleDrawer}>
-                    <ChevronLeftIcon
-                        className={classes.closeDrawer}
-                    />
+                    <ChevronLeftIcon className={classes.closeDrawer} />
                 </IconButton>
             </Toolbar>
             <Divider />
 
-            <List
-
-                className={classes.listDiv}
-            >
-                {sidebarList.map(item =>
-                    <ListItem key={item.id}
+            <List className={classes.listDiv}>
+                {sidebarList.map((item) => (
+                    <ListItem
+                        key={item.id}
                         button
                         className={
                             location?.includes(item.link)
@@ -124,18 +167,21 @@ const Sidebar = ({ toggleDrawer, open, classes, handleListClick }) => {
                         onClick={() => handleListClick(item.link)}
                     >
                         <ListItemIcon>
-                            {location?.includes(item?.link) ? IconHandaler(item?.label, true) : IconHandaler(item?.label, false)}
+                            {location?.includes(item?.link)
+                                ? IconHandaler(item?.label, true)
+                                : IconHandaler(item?.label, false)}
                         </ListItemIcon>
                         <ListItemText
                             style={{
-                                color: "white"
+                                color: "white",
                             }}
                             primary={item?.label}
                         />
-                    </ListItem>)}
+                    </ListItem>
+                ))}
             </List>
         </Drawer>
-    )
-}
+    );
+};
 
-export default Sidebar
+export default Sidebar;

@@ -1,8 +1,4 @@
-import {
-    BrowserRouter as Router,
-    Route,
-    Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 
 // routers
@@ -22,18 +18,29 @@ const Products = lazy(() => import("../screens/Products/Products"));
 const AddProduct = lazy(() => import("../screens/AddProduct/AddProduct"));
 const EditProduct = lazy(() => import("../screens/EditProduct/EditProduct"));
 
+// Orders screens
+const Orders = lazy(() => import("../screens/Orders/Orders"));
 
-
+// profile
+const Profile = lazy(() => import("../screens/Profile/Profile"));
 
 const RouterComponent = () => {
     return (
         <Router>
-            <Routes >
+            <Routes>
                 <Route element={<ProtectedRouter />}>
                     <Route path="/dashboard" element={<Dashboard />}></Route>
                     <Route path="/products" element={<Products />}></Route>
-                    <Route path="/products/add" element={<AddProduct />}></Route>
-                    <Route path="/products/edit/:productId" element={<EditProduct />}></Route>
+                    <Route
+                        path="/products/add"
+                        element={<AddProduct />}
+                    ></Route>
+                    <Route
+                        path="/products/edit/:productId"
+                        element={<EditProduct />}
+                    ></Route>
+                    <Route path="/orders" element={<Orders />}></Route>
+                    <Route path="/profile" element={<Profile />}></Route>
                 </Route>
                 <Route element={<UnProtectedRouter />}>
                     <Route path="/" element={<Login />}></Route>
@@ -41,8 +48,8 @@ const RouterComponent = () => {
                     <Route path="/onboarding" element={<Onboarding />}></Route>
                 </Route>
             </Routes>
-        </Router >
-    )
-}
+        </Router>
+    );
+};
 
-export default RouterComponent
+export default RouterComponent;

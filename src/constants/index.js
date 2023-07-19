@@ -1,4 +1,3 @@
-
 export const sidebarList = [
     {
         id: 1,
@@ -10,6 +9,9 @@ export const sidebarList = [
         label: "Products",
         link: "/products",
     },
-]
-
-
+    {
+        id: 3,
+        label: "Orders",
+        link: "/orders",
+    },
+];

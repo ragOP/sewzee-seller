@@ -1,10 +1,10 @@
-
 import { styled } from "@mui/material/styles";
-import { IconButton, Toolbar, Typography, } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { IconButton, Toolbar, Typography } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import "./Topbar.css"
+import "./Topbar.css";
 
 const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
@@ -28,6 +28,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const Topbar = ({ open, toggleDrawer, handleLogout }) => {
+    const navigate = useNavigate();
     return (
         <AppBar position="absolute" open={open}>
             <Toolbar
@@ -53,19 +54,21 @@ const Topbar = ({ open, toggleDrawer, handleLogout }) => {
                     color="inherit"
                     noWrap
                     sx={{ flexGrow: 1 }}
-                >
-                </Typography>
-                <div className=''>
+                ></Typography>
+                <div className="">
                     <button
-                        className='topbarLogoutbtn'
-                        onClick={handleLogout}
+                        className="topbarLogoutbtn"
+                        onClick={() => navigate("/profile")}
                     >
-                        Log out
+                        Profile
                     </button>
+                </div>
+                <div className="">
+                    <button className="topbarLogoutbtn">Log out</button>
                 </div>
             </Toolbar>
         </AppBar>
-    )
-}
+    );
+};
 
-export default Topbar
+export default Topbar;
