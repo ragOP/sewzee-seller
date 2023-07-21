@@ -1,0 +1,125 @@
+.card-container-skelton {
+    width: 773px;
+    height: 322px;
+    padding: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.33);
+    border-radius: 10px;
+    border: 2px solid var(--purplelight);
+    animation: skeleton 0.9s ease infinite alternate;
+}
+
+.card-container-skelton2 {
+    width: 100%;
+    height: 38px;
+    padding: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.33);
+    border-radius: 10px;
+    border: 2px solid var(--purplelight);
+    animation: skeleton 0.9s ease infinite alternate;
+}
+.card-container-skelton3 {
+    width: 100%;
+    border: none;
+    animation: skeleton 0.9s ease infinite alternate;
+    display: flex;
+    flex-direction: row;
+}
+
+.countCardLoader {
+    width: 216px;
+    height: 113px;
+    background-color: var(--purplelight);
+    animation: skeleton 0.9s ease infinite alternate;
+    margin-right: 30px;
+}
+
+@keyframes skeleton {
+    to {
+        opacity: 0.4;
+    }
+}
+
+.skelton-top-item {
+    display: flex;
+    justify-content: space-around;
+    height: 36px;
+}
+
+.skelton-top-item1 {
+    width: 100px;
+    height: 20px;
+    border-radius: 8px;
+    background-color: var(--purplelight);
+}
+
+.skelton-card-img-top {
+    width: 250px;
+    height: 170px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: var(--purplelight);
+}
+
+.skelton-card-img-top2 {
+    width: 500px;
+    height: 170px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: var(--purplelight);
+}
+
+.skelton-card-body1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    
+}
+
+.skelton-card-body1:first-of-type {
+    margin-left: 10px;
+}
+
+.skelton-card-body11 {
+    width: 7%;
+    height: 310px;
+    background-color: var(--purplelight);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.skelton-card-bodyYear {
+    width: 140px;
+    margin-right: 10px;
+    height: 310px;
+    background-color: var(--purplelight);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.skelton-card-body12 {
+    width: 7%;
+    height: 310px;
+    background-color: var(--purplelight);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.profileImage-skelton{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: var(--purplelight);
+    animation: skeleton 0.9s ease infinite alternate;
+}
+
+@keyframes skeleton {
+    to {
+        opacity: 0.4;
+    }
+}

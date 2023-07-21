@@ -4,18 +4,21 @@ import { persistReducer, persistStore } from "redux-persist";
 
 //reducers
 import productsReducer from "./slices/productSlices/productSlice";
-
+import ordersReducer from "./slices/ordersSlices/ordersSlice";
+import profileReducer from "./slices/profileSlices/profileSlice";
 
 //persist config
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: [""],
+    whitelist: ["profile"],
 };
 
 //combine all reducers
 const reducer = combineReducers({
     products: productsReducer,
+    orders: ordersReducer,
+    profile: profileReducer,
 });
 
 //persisted reducer

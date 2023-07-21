@@ -7,3 +7,35 @@
     color: white;
     cursor: pointer;
 }
+
+.profileImge img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.profileImge img:hover{
+    opacity: 0.8;
+}
+
+/* popper */
+.popper {
+    list-style: none;
+    padding: 0 20px;
+    padding-top: 15px;
+    width: 12vw;
+}
+
+.popper li {
+    padding-bottom: 15px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.popper li svg {
+    margin: 0 10px;
+    color: gray;
+}

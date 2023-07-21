@@ -1,0 +1,35 @@
+.profileSidebarWrapper{
+    border-right: 1px solid var(--border);
+    height: 95vh;
+    width: 16%;
+}
+.profileSidebar{
+    padding-right: 10px;
+}
+
+.profileSidebarList {
+    padding:10px 20px;
+    cursor: pointer;
+}
+
+.profileSidebarList p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+    color: var(--darkGray);
+}
+
+.listActive {
+    background-color: var(--primaryLight);
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.listActive p {
+    margin-bottom: 0px;
+    color: var(--primary) ! important;
+    font-style: normal;
+    font-weight: 500;
+}

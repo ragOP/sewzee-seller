@@ -1,0 +1,16 @@
+.prodileRightTabWrapper{
+    padding: 10px 20px;
+    display: flex;
+    width: calc(100% - 16%);
+    flex-direction: column;
+    
+}
+
+.prodileRightTabTitle{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 20px;
+    color: var(--extraBlack);
+}

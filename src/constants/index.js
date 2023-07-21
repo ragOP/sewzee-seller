@@ -15,3 +15,11 @@ export const sidebarList = [
         link: "/orders",
     },
 ];
+
+export const ProfileSidebarList = [
+    "Personal Details",
+    "Address",
+    "Contact Details",
+    "Bank Details",
+    "Business Details",
+];

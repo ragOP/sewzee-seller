@@ -1,6 +1,7 @@
 :root {
     --primary: #7D5FFE;
     --primaryLight: #e0f3ff;
+    --purplelight: #F2EFFF;
     --black: #000000;
     --danger: #f5260b;
     --white: #ffffff;
@@ -10,6 +11,7 @@
     --succees: #00b341;
     --border: #dedede;
     --textBlack: #233036;
+    --extraBlack:#0D0D0D;
     --inputText: #5C6469;
 
 }

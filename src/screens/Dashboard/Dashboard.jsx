@@ -1,38 +1,26 @@
-import { toast } from "react-hot-toast"
-import { useEffect, useState } from "react"
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 // local imports
-import "./Dashboard.css"
-import API from "../../services/common"
-
+import "./Dashboard.css";
+import { getProfileThunk } from "../../store/actions/profileAction/profileAction";
 
 const Dashboard = () => {
-  const [userDetails, setUserDetails] = useState({})
+    const dispatch = useDispatch();
+    const { profile } = useSelector((state) => state);
+    const { user } = profile?.sellerData;
+
+    useEffect(() => {
+        dispatch(getProfileThunk());
+    }, []);
 
 
-  const loadSellerDetails = async () => {
-    try {
-      const res = await API.get("/api/seller/");
-      console.log(res)
-      if (res.status === 200) {
-        setUserDetails(res.data)
-      }
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-    }
-  }
 
-  useEffect(() => {
-    loadSellerDetails()
-  }, [])
+    return (
+        <div className="dashboardWrapper">
+            <h1>Welcome to {user?.name}</h1>
+        </div>
+    );
+};
 
-
-  return (
-    <div className="dashboardWrapper">
-      <h1>Welcome to {userDetails?.data?.name}</h1>
-    </div>
-  )
-}
-
-export default Dashboard
+export default Dashboard;

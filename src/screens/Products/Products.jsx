@@ -5,7 +5,6 @@ import "./Products.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { EnhancedTable } from "../../components/Table/Table";
 
-
 import { productTableHeader } from "../../constants/TableHeader";
 import DeleteConfirmation from "../../components/DeleteConfirmation/DeleteConfirmation";
 
@@ -56,6 +55,7 @@ const Products = () => {
                 headerTitle="Products"
                 headerBtnName="Add Product"
                 handleClick={() => navigate("/products/add")}
+                isBtn={true}
             />
             <div className="productTableWtapper">
                 <EnhancedTable

@@ -1,0 +1,162 @@
+.profilePersonalWrapper{
+    display: flex;
+    flex-direction: column;
+}
+.profilePersonal{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+
+.profilePersonalContent{
+    display: flex;
+    align-items: center;
+}
+
+.profilePersonalImg{
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+.profilePersonalImg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.profilePersonalData{
+    display: flex;
+    flex-direction: column;
+}
+.profilePersonalData h6{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+    color: var(--extraBlack);
+}
+.profilePersonalData p,span{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+    color: var(--darkGray);
+}
+
+
+.profilePersonalInfo{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.profilePersonalHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.profilePersonalHeader h6{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+    color: var(--extraBlack);
+}
+
+.profilePersonalInfoContent{
+    display: flex;
+    flex-direction: column;
+}
+.profilePersonalInfoItems{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profilePersonalInfoItem{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    width: 50%;
+}
+.profilePersonalInfoItem p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+    color: var(--darkGray);
+}
+.profilePersonalInfoItem span{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+    color: var(--extraBlack);
+}
+
+
+
+.profilePersonalEdit{
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+}
+.profilePersonalEdit span{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+    color: var(--darkGray);
+    margin-right: 5px;
+}
+.profilePersonalEdit svg{
+    color: var(--darkGray);
+    
+}
+
+.addContactDetails{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.addContactDetails span{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    color: var(--darkGray);
+}
+.addContactDetails p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+    color: var(--primary);
+    background-color: var(--primaryLight);
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
