@@ -250,11 +250,11 @@
     height: 400px;
     margin-bottom: 0px;
     border-radius: 10px;
-    overflow: hidden;
+    position: relative;
     border-radius: 5px;
 }
 
 
-/* .onbordingMap div div:first-child {
-    width: 69% !important;
-} */
+.onbordingMap div div:first-child {
+    width: 100% !important;
+}
