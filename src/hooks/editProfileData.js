@@ -12,54 +12,24 @@ import {
     SETLATLNG,
 } from "./constant";
 
-export const initialState = {
-    name: "",
-    nickname: "",
-    tagline: "",
-    logo: "",
-    website: "",
-    description: "",
-    address: {
-        pincode: null,
-        address: "",
-        localty: "",
-        city: "",
-        state: "",
-        country: "",
-        lng: null,
-        lat: null,
-    },
-    contactDetails: [
-        {
-            email: "",
-            number: "",
-            name: "",
-            role: "",
-        },
-    ],
-    images: [],
-    videos: [],
-    bankDetails: {
-        account_no: "",
-        ifsc_code: "",
-        bank_name: "",
-        branch_name: "",
-        account_holder_name: "",
-    },
-};
-
-const EditProfileReducer = (state = initialState, action) => {
+const EditProfileReducer = (state, action) => {
     const { name, value } = action?.payload;
     switch (action.type) {
         case LOGO:
             return {
                 ...state,
-                logo: action.payload,
+                business: {
+                    ...state.business,
+                    logo: action.payload,
+                },
             };
         case GENARELINFORMATION:
             return {
                 ...state,
-                [name]: value,
+                business: {
+                    ...state.business,
+                    [name]: value,
+                },
             };
         case ADDONBOARDIMAGES:
             return {
@@ -88,8 +58,8 @@ const EditProfileReducer = (state = initialState, action) => {
         case ADDRESS:
             return {
                 ...state,
-                address: {
-                    ...state.address,
+                business: {
+                    ...state.business,
                     [name]: value,
                 },
             };
@@ -143,8 +113,8 @@ const EditProfileReducer = (state = initialState, action) => {
         case BANKDETAILS:
             return {
                 ...state,
-                bankDetails: {
-                    ...state.bankDetails,
+                user: {
+                    ...state.user,
                     [name]: value,
                 },
             };

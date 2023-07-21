@@ -6,6 +6,18 @@ import API from "./common";
 const getProfile = () => {
     return API.get(`api/seller/`);
 };
+const updateProfileBasic = (data) => {
+    return API.put(`api/seller/update/basic`, data);
+};
+const updateProfileAddress = (data) => {
+    return API.put(`api/seller/update/address`, data);
+};
+const updateProfileBank = (data) => {
+    return API.put(`api/seller/update/bank`, data);
+};
+const updateProfileContact = (data) => {
+    return API.put(`api/seller/update/contact`, data);
+};
 
 // product services
 const getApprovedProduct = () => {
@@ -22,6 +34,10 @@ const getOrders = () => {
 
 const SewzeeService = {
     getProfile,
+    updateProfileBasic,
+    updateProfileAddress,
+    updateProfileBank,
+    updateProfileContact,
     getApprovedProduct,
     getProductCategory,
     getOrders,

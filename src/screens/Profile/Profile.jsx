@@ -5,17 +5,23 @@ import ProfileSidebar from "../../components/ProfileSidebar/ProfileSidebar";
 import ProdileRightTab from "../../components/ProdileRightTab/ProdileRightTab";
 import { useReducer } from "react";
 import EditProfileReducer from "../../hooks/editProfileData";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProfileThunk } from "../../store/actions/profileAction/profileAction";
 
 const Profile = () => {
+    const dispatch = useDispatch();
     const [profileSidTab, setProfileSidTab] = useState("Personal Details");
     const { profile } = useSelector((state) => state);
-    const [formState, dispatch] = useReducer(
+    const [formState, reducerDispatch] = useReducer(
         EditProfileReducer,
         profile?.sellerData
     );
 
-    console.log(formState);
+    useEffect(() => {
+        dispatch(getProfileThunk());
+    }, []);
+
     return (
         <section className="profileWrapper">
             <PageHeader headerTitle="Account Details" isBtn={false} />
@@ -28,7 +34,7 @@ const Profile = () => {
                 <ProdileRightTab
                     profileSidTab={profileSidTab}
                     formState={formState}
-                    reducerDispatch={dispatch}
+                    reducerDispatch={reducerDispatch}
                 />
             </div>
         </section>
