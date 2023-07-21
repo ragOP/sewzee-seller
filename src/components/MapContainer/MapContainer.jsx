@@ -34,7 +34,8 @@ const MapContainer = ({ google, dispatch, defaultData }) => {
                         : 71.8970167,
             }} // Set your initial center coordinates here
         >
-            {coordinates.lat && coordinates.lng && (
+            {(defaultData?.length > 0 ||
+                (coordinates.lat && coordinates.lng)) && (
                 <Marker
                     position={{
                         lat:

@@ -37,6 +37,8 @@ const ProfileRightAddress = ({ formState, reducerDispatch }) => {
                 pincode: business.pincode,
                 country: business.country,
                 localty: business.localty,
+                lat: business.position.coordinates[0],
+                lng: business.position.coordinates[1],
             };
             const res = await API.put("/api/seller/update/address", data);
             console.log(res);
@@ -195,8 +197,12 @@ const ProfileRightAddress = ({ formState, reducerDispatch }) => {
                     </div>
                     {mapOpen && (
                         <div className="profileMap">
-                            <MapContainer defaultData={formState?.business?.position
-                                        ?.coordinates} dispatch={reducerDispatch} />
+                            <MapContainer
+                                defaultData={
+                                    formState?.business?.position?.coordinates
+                                }
+                                dispatch={reducerDispatch}
+                            />
                         </div>
                     )}
                 </div>

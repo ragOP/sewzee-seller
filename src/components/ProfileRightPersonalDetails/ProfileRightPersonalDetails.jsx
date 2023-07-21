@@ -22,10 +22,10 @@ const ProfileRightPersonalDetails = ({ formState, reducerDispatch }) => {
                         </span>
                     </div>
                 </div>
-                <div className="profilePersonalEdit">
+                {/* <div className="profilePersonalEdit">
                     <span>Edit</span>
                     <CiEdit />
-                </div>
+                </div> */}
             </div>
             <div className="profilePersonalInfo">
                 <div className="profilePersonalHeader">
