@@ -3,6 +3,7 @@ import "./ProfileSidebar.css";
 
 const ProfileSidebar = ({ profileSidTab, setProfileSidTab, formState }) => {
     const { user } = formState;
+
     return (
         <div className="profileSidebarWrapper">
             <div className="profileSidebar">
@@ -16,7 +17,7 @@ const ProfileSidebar = ({ profileSidTab, setProfileSidTab, formState }) => {
                     >
                         <p>
                             {item === "Business Details"
-                                ? user?.isBrand === 1
+                                ? user?.isbrand === 1
                                     ? "Brand Details"
                                     : "Boutique Details"
                                 : item}

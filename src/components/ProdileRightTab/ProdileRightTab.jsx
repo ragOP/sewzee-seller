@@ -10,7 +10,7 @@ const ProdileRightTab = ({ profileSidTab, formState, reducerDispatch }) => {
         <div className="prodileRightTabWrapper">
             <h6 className="prodileRightTabTitle">
                 {profileSidTab === "Business Details"
-                    ? formState?.user?.isBrand === 1
+                    ? formState?.user?.isbrand === 1
                         ? "Brand Details"
                         : "Boutique Details"
                     : profileSidTab}

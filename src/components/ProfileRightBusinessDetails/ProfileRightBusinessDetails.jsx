@@ -84,7 +84,7 @@ const ProfileRightBusinessDetails = ({ formState, reducerDispatch }) => {
             <form onSubmit={handleEdit} className="profilePersonalInfo">
                 <div className="profilePersonalHeader">
                     <h6>
-                        {user?.isBrand === 1 ? "Brand" : "Boutique"} Information
+                        {user?.isbrand === 1 ? "Brand" : "Boutique"} Information
                     </h6>
                     {isEdit ? (
                         <CustomButton classId="profileEditBtn">

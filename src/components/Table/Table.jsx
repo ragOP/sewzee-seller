@@ -14,9 +14,6 @@ const options = {
 
 const Table = ({ tableData, tableHeader, tableTitle, handleDelete }) => {
 
-
-
-
     return (
         <Box>
             <MUIDataTable
