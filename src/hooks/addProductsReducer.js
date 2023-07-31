@@ -163,6 +163,7 @@ const AddProdutReducer = (state = initialState, action) => {
                 };
             }
         case VARIANT:
+            console.log(action?.payload);
             return {
                 ...state,
                 variants: state.variants.map((item, index) => {
@@ -190,6 +191,7 @@ const AddProdutReducer = (state = initialState, action) => {
                     {
                         color: "",
                         image: "",
+                        colorname: "",
                         subvariants: [
                             {
                                 size: "",

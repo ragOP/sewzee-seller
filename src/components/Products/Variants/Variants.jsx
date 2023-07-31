@@ -201,18 +201,24 @@ const Variants = ({ formState, dispatch }) => {
                                     <div className="variantColorPicker">
                                         <GiWaterDrop
                                             style={{
-                                                fill: color,
+                                                fill: item?.color
+                                                    ? item?.color
+                                                    : "#000000",
                                             }}
                                         />
                                         <input
-                                            value={color}
+                                            value={
+                                                item?.color
+                                                    ? item?.color
+                                                    : "#000000"
+                                            }
                                             type="text"
                                             onChange={(e) =>
                                                 handleInputColor(e, index)
                                             }
                                         />
                                         <div className="variantsInput flex">
-                                            <label htmlFor="color">
+                                            <label htmlFor={`color${index}`}>
                                                 <IoIosColorFill
                                                     style={{
                                                         fill: "var(--primary)",
@@ -224,9 +230,9 @@ const Variants = ({ formState, dispatch }) => {
                                                 onChange={(e) =>
                                                     handleVariant(e, index)
                                                 }
-                                                value={color}
+                                                value={item?.color}
                                                 type="color"
-                                                id="color"
+                                                id={`color${index}`}
                                                 name="color"
                                             />
                                         </div>
