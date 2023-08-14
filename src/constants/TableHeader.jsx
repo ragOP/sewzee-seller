@@ -1,17 +1,26 @@
 // const columns = ["Name", "Company", "City", "State"];
 import { Link } from "react-router-dom";
+import { sewzeeImages } from "../assets";
 
 export const productTableHeader = [
     {
-        name: "productImage",
+        name: "images",
         label: "Product Image",
         options: {
             customBodyRender: (value) => {
                 console.log(value);
+                let image;
+
+                if (value?.length > 0) {
+                    image = value[0];
+                } else {
+                    image = sewzeeImages.NoImage;
+                }
+
                 return (
                     <img
                         className="tableImage"
-                        src={value}
+                        src={image}
                         alt="productImage"
                         width="50"
                         height="50"
@@ -23,7 +32,7 @@ export const productTableHeader = [
         },
     },
     {
-        name: "productName",
+        name: "name",
         label: "Product Name",
         options: {
             filter: false,
@@ -31,38 +40,52 @@ export const productTableHeader = [
         },
     },
     {
-        name: "productPrice",
+        name: "price",
         label: "Product Price",
         options: {
-            filter: true,
-            sort: true,
+            filter: false,
+            sort: false,
         },
     },
     {
-        name: "productCategory",
+        name: "category",
         label: "Product Category",
         options: {
-            filter: true,
-            sort: true,
+            filter: false,
+            sort: false,
         },
     },
     {
-        name: "productInStock",
+        name: "instock",
         label: "Product In Stock",
         options: {
-            filter: true,
-            sort: true,
+            customBodyRender: (value) => {
+                let inStock;
+
+                if (value === 1) {
+                    inStock = "Yes";
+                } else {
+                    inStock = "No";
+                }
+
+                return <span>{inStock}</span>;
+            },
+            filter: false,
+            sort: false,
         },
     },
     {
-        name: "action",
+        name: "id",
         label: "Action",
         options: {
             customBodyRender: (value) => {
                 console.log(value);
                 return (
                     <div className="actionWrapper">
-                        <Link to={`/products`} className="actionBtn">
+                        <Link
+                            to={`/products/edit/${value}`}
+                            className="actionBtn"
+                        >
                             Edit
                         </Link>
                         {/* kk<p className="actionBtn">Edit</p> */}

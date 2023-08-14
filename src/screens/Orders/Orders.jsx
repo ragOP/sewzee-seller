@@ -6,6 +6,7 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import { EnhancedTable } from "../../components/Table/Table";
 import { orderTableHeader } from "../../constants/TableHeader";
 import { getOrdersThunk } from "../../store/actions/ordersAction/ordersAction";
+import { TableLoader } from "../../ui/SkeltonLoader/SkeltonLoader";
 
 const Orders = () => {
     const dispatch = useDispatch();
@@ -19,11 +20,15 @@ const Orders = () => {
         <section className="ordersWrapper">
             <PageHeader headerTitle="Orders" isBtn={false} />
             <div className="orderTableWtapper">
-                <EnhancedTable
-                    tableHeader={orderTableHeader}
-                    tableData={orders?.orders}
-                    tableTitle="Orders"
-                />
+                {orders?.isLoading ? (
+                    <TableLoader />
+                ) : (
+                    <EnhancedTable
+                        tableHeader={orderTableHeader}
+                        tableData={orders?.orders}
+                        tableTitle="Orders"
+                    />
+                )}
             </div>
         </section>
     );

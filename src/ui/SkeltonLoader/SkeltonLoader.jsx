@@ -115,3 +115,188 @@ export function ProfileImageLoader() {
     );
     return Array(COUNTER).fill(<CourseSkelton key={Math.random()} />);
 }
+
+export function TableLoader() {
+    const COUNTER = 1;
+    const CourseSkelton = () => (
+        <div className="table-skelton" style={{ cursor: "pointer" }}>
+            <div className="tableHeader-skelton">
+                <div className="tableHeaderLeft-skelton">
+                    <div className="tableHeaderLeftItem-skelton"></div>
+                </div>
+                <div className="tableHeaderRight-skelton">
+                    <span className="tableHeaderRightItem-skelton"></span>
+                    <span className="tableHeaderRightItem-skelton"></span>
+                    <span className="tableHeaderRightItem-skelton"></span>
+                    <span className="tableHeaderRightItem-skelton"></span>
+                    <span className="tableHeaderRightItem-skelton"></span>
+                </div>
+            </div>
+            <div className="tableBodyRight-skelton">
+                <table className="fl-table tg">
+                    <thead>
+                        <tr>
+                            <th className="tg-cly1">
+                                <div className="line"></div>
+                            </th>
+                            <th className="tg-cly1">
+                                <div className="line"></div>
+                            </th>
+                            <th className="tg-cly1">
+                                <div className="line"></div>
+                            </th>
+                            <th className="tg-cly1">
+                                <div className="line"></div>
+                            </th>
+                            <th className="tg-cly1">
+                                <div className="line"></div>
+                            </th>
+                            <th className="tg-cly1">
+                                <div className="line"></div>
+                            </th>
+                            <th className="tg-cly1">
+                                <div className="line"></div>
+                            </th>
+                            <th className="tg-cly1">
+                                <div className="line"></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                            <td className="tg-cly1">
+                                <div className="line"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+    return Array(COUNTER).fill(<CourseSkelton key={Math.random()} />);
+}

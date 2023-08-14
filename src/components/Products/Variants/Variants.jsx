@@ -348,6 +348,7 @@ const Variants = ({ formState, dispatch }) => {
                                                                 }
                                                                 placeholder="Size"
                                                                 type="text"
+                                                                value={row?.size}
                                                                 name="size"
                                                             />
                                                         </TableCell>
@@ -364,6 +365,7 @@ const Variants = ({ formState, dispatch }) => {
                                                             <input
                                                                 type="text"
                                                                 name="price"
+                                                                value={row?.price}
                                                                 placeholder="Price"
                                                             />
                                                         </TableCell>
@@ -377,7 +379,6 @@ const Variants = ({ formState, dispatch }) => {
                                                                     )
                                                                 }
                                                                 {...label}
-                                                                required
                                                                 name="onsale"
                                                                 defaultChecked={
                                                                     row?.onsale
@@ -403,6 +404,7 @@ const Variants = ({ formState, dispatch }) => {
                                                                             : true
                                                                     }
                                                                     type="text"
+                                                                    value={row?.discount}
                                                                     name="discount"
                                                                     placeholder="Dis..."
                                                                 />
@@ -498,6 +500,7 @@ const Variants = ({ formState, dispatch }) => {
                                                                         : true
                                                                 }
                                                                 type="text"
+                                                                value={row?.stock}
                                                                 name="stock"
                                                                 placeholder="Stock"
                                                             />

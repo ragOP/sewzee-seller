@@ -5,8 +5,16 @@ import "./DeleteConfirmation.css";
 import CustomModal from "../../ui/CustomModal/CustomModal";
 import { CustomButton } from "../../ui/constants";
 
-const DeleteConfirmation = ({ open, handleClose, isSingle, modalData }) => {
+const DeleteConfirmation = ({
+    open,
+    handleClose,
+    handleDelete,
+    isSingle,
+    modalData,
+    singleDeletecompoment,
+}) => {
     console.log(modalData);
+
     return (
         <CustomModal open={open} handleClose={handleClose}>
             <div className="deleteConfirmationWrapper">
@@ -29,8 +37,10 @@ const DeleteConfirmation = ({ open, handleClose, isSingle, modalData }) => {
                                     <img src={modalData?.productImage} alt="" />
                                 </div>
                                 <div className="deleteModalContent">
-                                    <h5>{modalData?.productName}</h5>
-                                    <p>Price: {modalData?.productPrice}</p>
+                                    <h5> Name: {modalData?.productName}</h5>
+                                    {modalData?.productPrice && (
+                                        <p>Price: {modalData?.productPrice}</p>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -41,7 +51,10 @@ const DeleteConfirmation = ({ open, handleClose, isSingle, modalData }) => {
                     )}
                 </div>
                 <div className="deleteConfirmationFooter">
-                    <CustomButton classId="confirmationBtn confirmationBtn--yes">
+                    <CustomButton
+                        handleClick={handleDelete}
+                        classId="confirmationBtn confirmationBtn--yes"
+                    >
                         Yes
                     </CustomButton>
                     <CustomButton classId="confirmationBtn confirmationBtn--no">

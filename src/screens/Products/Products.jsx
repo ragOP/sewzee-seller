@@ -13,6 +13,9 @@ import {
     getApprovdProduct,
     getProductCategory,
 } from "../../store/actions/productAction/productAction";
+import { TableLoader } from "../../ui/SkeltonLoader/SkeltonLoader";
+import { toast } from "react-hot-toast";
+import API from "../../services/common";
 
 const Products = () => {
     const dispatch = useDispatch();
@@ -21,28 +24,59 @@ const Products = () => {
     const [isModalOpen, setModalOpen] = useState(false);
     const handleClose = () => setModalOpen(false);
     const handleShow = () => setModalOpen(true);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
     const [rowsToDelete, setRowsToDelete] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     const handleDeleteClick = (rowsDeleted, data) => {
         if (rowsDeleted.data.length === 1) {
             const selectedRow = products?.products[rowsDeleted.data[0].index];
-            console.log(selectedRow);
             setSelectedProduct(selectedRow);
+        } else {
+            setSelectedProduct(null);
+            const selectedRows = rowsDeleted.data.map((item) => {
+                return products?.products[item.index];
+            });
+            setSelectedProduct(selectedRows);
         }
-        setRowsToDelete(rowsDeleted);
         handleShow();
     };
 
-    // const handleDeleteConfirmation = () => {
-    //     const deletedRows = rowsToDelete.data.map((row) => row.index);
-    //     handleDelete(deletedRows);
-    //     deleteModalOpen(false);
-    // };
+    const handlePageLimit = (limit) => {
+        setRowsPerPage(limit);
+    };
+    const handleDeleteConfirmation = async () => {
+        if (selectedProduct?.length > 0) {
+            // Multiple Item Delete
+            const selectedIds = selectedProduct.map((item) => item.id);
+            selectedIds.forEach(async (id, index, data) => {
+                try {
+                    await API.delete(`api/seller/product/${id}`);
+                } catch (error) {
+                    console.error("Error deleting data:", error);
+                }
+                if (index === data?.length - 1) {
+                    toast.success("Deleted Successfully");
+                    dispatch(getApprovdProduct());
+                }
+            });
+        } else {
+            //  Single Item Delete
+            try {
+                const response = await API.delete(
+                    `api/seller/product/${selectedProduct?.id}`
+                );
+                if (response?.status === 200) {
+                    dispatch(getApprovdProduct());
+                    toast.success(response?.data?.message);
+                }
+            } catch (error) {
+                toast.error(error?.response?.data?.message);
+            }
+        }
 
-    // const handleDeleteCancel = () => {
-    //     deleteModalOpen(false);
-    // };
+        handleClose();
+    };
 
     useEffect(() => {
         dispatch(getProductCategory());
@@ -58,18 +92,28 @@ const Products = () => {
                 isBtn={true}
             />
             <div className="productTableWtapper">
-                <EnhancedTable
-                    tableHeader={productTableHeader}
-                    tableData={products?.products}
-                    tableTitle="Products"
-                    handleDelete={handleDeleteClick}
-                    deleteModalOpen={setModalOpen}
-                />
+                {products?.isLoading ? (
+                    <TableLoader />
+                ) : (
+                    <EnhancedTable
+                        tableHeader={productTableHeader}
+                        tableData={products?.products}
+                        tableTitle="Products"
+                        handleDelete={handleDeleteClick}
+                        deleteModalOpen={setModalOpen}
+                        handlePageLimit={handlePageLimit}
+                    />
+                )}
             </div>
             <DeleteConfirmation
                 open={isModalOpen}
                 handleClose={handleClose}
-                modalData={selectedProduct}
+                handleDelete={handleDeleteConfirmation}
+                modalData={{
+                    productName: selectedProduct?.name,
+                    productImage: selectedProduct?.images[0],
+                    productPrice: selectedProduct?.price,
+                }}
                 isSingle={selectedProduct ? true : false}
             />
         </div>

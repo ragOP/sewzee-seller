@@ -16,16 +16,17 @@ import API from "../../../services/common";
 import { CustomButton } from "../../../ui/constants";
 import { ADDTYPECATEGORYCOLLECTION } from "../../../hooks/constant";
 
-const Category = ({ formState, dispatch }) => {
-    const [category, setCategory] = useState("");
+const Category = ({ formState, dispatch, type }) => {
+    const [category, setCategory] = useState(type === "edit" ? "Choose" : "");
     const [isLoading, setLsloading] = useState(false);
     const [allCategory, setAllCategory] = useState([]);
     const [newCategory, setNewCategory] = useState({
         type: "",
         category: "",
     });
+    const [defaultValue, setDefaultValue] = useState({});
     const [categoryChooseStep, setCategoryChooseStep] = useState({
-        type: "",
+        type: type === "edit" ? formState?.type : "",
         category: [],
     });
     const [categoryList, setCategoryList] = useState([]);
@@ -147,6 +148,47 @@ const Category = ({ formState, dispatch }) => {
         return options;
     };
 
+    useEffect(() => {
+        if (type === "edit") {
+            setCategoryChooseStep({
+                ...categoryChooseStep,
+                type: formState?.type,
+            });
+            if (formState?.type) {
+                const filteredCategory = categoryList[0]
+                    ?.filter((category) => category.type === formState?.type)
+                    .map((category) => {
+                        return {
+                            value: category.id,
+                            label: category?.category,
+                        };
+                    });
+                const findCategory = filteredCategory?.find(
+                    (item) => item.value === formState?.category
+                );
+                setDefaultValue(findCategory);
+
+                const sortedCategory = filteredCategory?.sort((a, b) =>
+                    a?.label?.localeCompare(b.label)
+                );
+
+                const updatedOptions = [
+                    ...sortedCategory,
+                    {
+                        value: "Create New Category",
+                        label: "Create New Category",
+                    },
+                ];
+                setAllCategory(updatedOptions);
+                setCategoryChooseStep({
+                    ...categoryChooseStep,
+                    category: updatedOptions,
+                    type: formState?.type,
+                });
+            }
+        }
+    }, [formState?.type]);
+
     return (
         <section className="categoryWrapper">
             <div className="categoryContainer">
@@ -223,6 +265,7 @@ const Category = ({ formState, dispatch }) => {
                                     id="combo-box-demo"
                                     options={categoryChooseStep?.category}
                                     sx={{ width: 300 }}
+                                    defaultValue={defaultValue}
                                     onInputChange={handleSearchChange}
                                     onChange={handleCategory}
                                     filterOptions={filterOptions}

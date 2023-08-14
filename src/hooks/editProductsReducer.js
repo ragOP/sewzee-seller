@@ -1,117 +1,155 @@
-import { ADDIMAGES, ADDMORESUBVARIANT, ADDMORETAGS, ADDMOREVARIANT, ADDTYPECATEGORYCOLLECTION, ADDVIDEOS, BASICDETAILS, PRICING, REMOVEIMAGES, REMOVEVIDEOS, SEOTAG, VARIANT, VARIANTSUB } from "./constant";
-
+import {
+    ADDIMAGES,
+    ADDMORESUBVARIANT,
+    ADDMORETAGS,
+    ADDMOREVARIANT,
+    ADDTYPECATEGORYCOLLECTION,
+    ADDVIDEOS,
+    BASICDETAILS,
+    PRICING,
+    REMOVEIMAGES,
+    REMOVEVIDEOS,
+    SEOTAG,
+    SETINITIALDATA,
+    VARIANT,
+    VARIANTSUB,
+} from "./constant";
 
 const editProductsReducer = (state, action) => {
     const { name, value, checked } = action?.payload;
     switch (action.type) {
+        case SETINITIALDATA:
+            return {
+                ...action.payload,
+            };
         case BASICDETAILS:
             return {
                 ...state,
-                [name]: value
-            }
+                [name]: value,
+            };
         case ADDIMAGES:
             return {
                 ...state,
-                images: [...state.images, action?.payload]
-            }
+                images: [...state.images, action?.payload],
+            };
         case REMOVEIMAGES:
             return {
                 ...state,
-                images: state.images.filter((item, index) => index !== action.payload)
-            }
+                images: state.images.filter(
+                    (item, index) => index !== action.payload
+                ),
+            };
         case ADDVIDEOS:
             return {
                 ...state,
-                videos: [...state.images, action?.payload]
-            }
+                videos: [...state.images, action?.payload],
+            };
         case REMOVEVIDEOS:
             return {
                 ...state,
-                videos: state.videos.filter((item, index) => index !== action.payload)
-            }
+                videos: state.videos.filter(
+                    (item, index) => index !== action.payload
+                ),
+            };
         case ADDTYPECATEGORYCOLLECTION:
             return {
                 ...state,
-                [name]: value
-            }
+                [name]: value,
+            };
         case PRICING:
-            if (name === ("onsale" || "instock")) {
+            if (name === "onsale" || "instock") {
                 return {
                     ...state,
-                    [name]: checked === true ? 1 : 0
-                }
+                    [name]: checked === true ? 1 : 0,
+                };
             } else {
                 return {
                     ...state,
-                    [name]: value
-                }
+                    [name]: value,
+                };
             }
         case VARIANT:
-            console.log(action.payload)
+            console.log(action.payload);
             return {
                 ...state,
                 variants: state.variants.map((item, index) => {
                     if (index === action.payload.index) {
                         return {
                             ...item,
-                            [name]: value
-                        }
+                            [name]: value,
+                        };
                     }
-                    return item
-                })
-            }
+                    return item;
+                }),
+            };
         case ADDMOREVARIANT:
             return {
                 ...state,
-                variants: [...state.variants, { color: "", image: "", subvariants: [{ size: "", stock: 0, price: "", discount: "", onsale: 0 }] }]
-            }
+                variants: [
+                    ...state.variants,
+                    {
+                        color: "",
+                        image: "",
+                        subvariants: [
+                            {
+                                size: "",
+                                stock: 0,
+                                price: "",
+                                discount: "",
+                                onsale: 0,
+                            },
+                        ],
+                    },
+                ],
+            };
         case VARIANTSUB:
-            console.log(action.payload)
+            console.log(action.payload);
             return {
                 ...state,
                 variants: state.variants.map((item, index) => {
                     if (index === action.payload.index) {
                         return {
                             ...item,
-                            subvariants: item.subvariants.map((subitem, subindex) => {
-                                if (subindex === action.payload.subIndex) {
-                                    if (name === "onsale") {
-                                        return {
-                                            ...subitem,
-                                            [name]: checked === true ? 1 : 0
-                                        }
-                                    } else {
-                                        return {
-                                            ...subitem,
-                                            [name]: value
+                            subvariants: item.subvariants.map(
+                                (subitem, subindex) => {
+                                    if (subindex === action.payload.subIndex) {
+                                        if (name === "onsale" || "instock") {
+                                            return {
+                                                ...subitem,
+                                                [name]:
+                                                    checked === true ? 1 : 0,
+                                            };
+                                        } else {
+                                            return {
+                                                ...subitem,
+                                                [name]: value,
+                                            };
                                         }
                                     }
-
+                                    return subitem;
                                 }
-                                return subitem
-                            })
-                        }
+                            ),
+                        };
                     }
-                    return item
-                })
-            }
+                    return item;
+                }),
+            };
 
         case SEOTAG:
             return {
                 ...state,
                 seotags: state.seotags.map((item, index) => {
                     if (index === action.payload.index) {
-                        return action.payload.value
+                        return action.payload.value;
                     }
-                    return item
-                })
-            }
+                    return item;
+                }),
+            };
         case ADDMORETAGS:
             return {
                 ...state,
-                seotags: [...state.seotags, ""]
-            }
-
+                seotags: [...state.seotags, ""],
+            };
 
         case ADDMORESUBVARIANT:
             return {
@@ -120,21 +158,24 @@ const editProductsReducer = (state, action) => {
                     if (index === action.payload) {
                         return {
                             ...item,
-                            subvariants: [...item.subvariants, {
-                                size: "",
-                                stock: 0,
-                                price: "",
-                                discount: "",
-                                onsale: 0
-                            }]
-                        }
+                            subvariants: [
+                                ...item.subvariants,
+                                {
+                                    size: "",
+                                    stock: 0,
+                                    price: "",
+                                    discount: "",
+                                    onsale: 0,
+                                },
+                            ],
+                        };
                     }
-                    return item
-                })
-            }
+                    return item;
+                }),
+            };
         default:
             return state;
     }
-}
+};
 
 export default editProductsReducer;

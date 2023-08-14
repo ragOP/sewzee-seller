@@ -1,6 +1,4 @@
 import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
-import { useState } from "react";
 
 import "./ProductsBasicInfo.css";
 import { BASICDETAILS } from "../../../hooks/constant";
@@ -36,6 +34,7 @@ const ProductsBasicInfo = ({ formState, dispatch }) => {
                         className=""
                         onChange={handleChnage}
                         type="text"
+                        defaultValue={formState?.description}
                         name="description"
                         id="description"
                         placeholder={`Enter Product Description`}
