@@ -48,7 +48,7 @@ export const productTableHeader = [
         },
     },
     {
-        name: "category",
+        name: "categoryName",
         label: "Product Category",
         options: {
             filter: false,

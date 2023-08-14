@@ -10,6 +10,8 @@ import {
     REMOVEIMAGES,
     REMOVEVIDEOS,
     SETLATLNG,
+    ADDCONTACTDETAIL,
+    ADDCONTACTDETAILDATA,
 } from "./constant";
 
 const EditProfileReducer = (state, action) => {
@@ -63,8 +65,42 @@ const EditProfileReducer = (state, action) => {
                     [name]: value,
                 },
             };
+        case ADDCONTACTDETAIL:
+            return {
+                ...state,
+                business: {
+                    ...state.business,
+                    contactDetails: [
+                        ...state.business.contactDetails,
+                        {
+                            email: "",
+                            number: "",
+                            name: "",
+                            role: "",
+                        },
+                    ],
+                },
+            };
+        case ADDCONTACTDETAILDATA:
+            return {
+                ...state,
+                business: {
+                    ...state.business,
+                    contactDetails: state.business.contactDetails.map(
+                        (item, index) => {
+                            if (index === action.payload.index) {
+                                return {
+                                    ...item,
+                                    [name]: value,
+                                };
+                            } else {
+                                return item;
+                            }
+                        }
+                    ),
+                },
+            };
         case SETLATLNG:
-            console.log(action.payload);
             return {
                 ...state,
                 address: {
