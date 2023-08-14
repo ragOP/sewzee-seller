@@ -82,7 +82,7 @@ const EditProduct = () => {
     return (
         <form onSubmit={handleSubmit} className="addProductWrapper">
             <PageHeader
-                headerTitle="Add Products"
+                headerTitle="Edit Products"
                 headerBtnName="Add Product"
                 type="back"
                 handleBack={() => navigate("/products")}
