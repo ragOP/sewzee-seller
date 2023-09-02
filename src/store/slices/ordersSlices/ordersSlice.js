@@ -33,32 +33,9 @@ export const ordersSlice = createSlice({
         });
         builder.addCase(getOrdersThunk.fulfilled, (state, action) => {
             const data = action.payload;
-            console.log(data);
+
             state.ordersList = data?.data;
-            // const convertData = data.data.map((item) => {
-            //     // const images = JSON.parse(item.images);
-            //     const findcategory = state.category.find(
-            //         (item) => item?.id === item?.category
-            //     );
-            //     console.log(findcategory);
-            //     return [
-            //         item.images,
-            //         item?.name,
-            //         item?.price,
-            //         item?.category,
-            //         item?.instock === 1 ? "Yes" : "No",
-            //         item.id,
-            //     ];
-            // });
-            // const productData = convertData.map((item) => ({
-            //     productImage: item[0],
-            //     productName: item[1],
-            //     productPrice: item[2],
-            //     productCategory: item[3],
-            //     productInStock: item[4],
-            //     action: item[5],
-            // }));
-            // state.products = productData;
+            state.orders = data?.data;
             state.error = {
                 isError: false,
                 msg: "",

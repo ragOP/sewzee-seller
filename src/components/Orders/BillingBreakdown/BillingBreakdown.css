@@ -1,0 +1,56 @@
+.billingBreakdownWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+.billingBreakdownContainer{
+    width: 50%;
+    height: auto;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.billingBreakdownContainer svg{
+    height: 20px;
+    width: 20px;
+    fill: var(--primary);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  thead {
+    background-color: #7D5FFE;
+    color: #fff;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tbody tr:hover {
+    background-color: #ddd;
+  }
+
+  
+  th:first-child,
+  td:first-child {
+    border-left: 1px solid #ddd;
+  }
+  
+  th:last-child,
+  td:last-child {
+    border-right: 1px solid #ddd;
+  }
+  

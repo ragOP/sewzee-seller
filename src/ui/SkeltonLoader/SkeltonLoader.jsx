@@ -116,6 +116,18 @@ export function ProfileImageLoader() {
     return Array(COUNTER).fill(<CourseSkelton key={Math.random()} />);
 }
 
+export function SingleOrderTopLoader() {
+    const COUNTER = 1;
+    const CourseSkelton = () => (
+        <div className="orderInfoHeader-skelton">
+            <h2></h2>
+            <p></p>
+            <button></button>
+        </div>
+    );
+    return Array(COUNTER).fill(<CourseSkelton key={Math.random()} />);
+}
+
 export function TableLoader() {
     const COUNTER = 1;
     const CourseSkelton = () => (

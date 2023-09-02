@@ -246,3 +246,43 @@
         opacity: 0.4;
     }
 }
+/* order page */
+.orderInfoHeader-skelton{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.orderInfoHeader-skelton h2{
+    width: 25%;
+    height: 30px;
+    background-color: var(--darkGray);
+    animation: skeleton 0.9s ease infinite alternate;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.orderInfoHeader-skelton p{
+    width: 18%;
+    height: 30px;
+    background-color: var(--darkGray);
+    animation: skeleton 0.9s ease infinite alternate;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.orderInfoHeader-skelton button{
+    width: 13%;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: var(--darkGray);
+    animation: skeleton 0.9s ease infinite alternate;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+
+@keyframes skeleton {
+    to {
+        opacity: 0.4;
+    }
+}

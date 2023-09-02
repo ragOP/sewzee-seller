@@ -1,6 +1,9 @@
 // const columns = ["Name", "Company", "City", "State"];
 import { Link } from "react-router-dom";
 import { sewzeeImages } from "../assets";
+import { useOrder } from "../hooks/useOrder";
+import { useSelector } from "react-redux";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 export const productTableHeader = [
     {
@@ -101,15 +104,35 @@ export const productTableHeader = [
 
 export const orderTableHeader = [
     {
-        name: "productDetails",
+        name: "images",
         label: "Product Details",
         options: {
             filter: false,
             sort: false,
+            customBodyRender: (value, tableMeta) => {
+                let image;
+                if (value?.length > 0) {
+                    image = value[0];
+                } else {
+                    image = sewzeeImages.NoImage;
+                }
+                const getFullData = tableMeta?.fullData?.find(
+                    (item) => item.id === tableMeta.rowData[4]
+                );
+
+                return (
+                    <div className="orderProductdetails">
+                        <img src={image} alt="" />
+                        <div className="orderProductdetails__text">
+                            <p>{getFullData?.product_name}</p>
+                        </div>
+                    </div>
+                );
+            },
         },
     },
     {
-        name: "orderQuantity",
+        name: "quantity",
         label: "Order Quantity",
         options: {
             filter: true,
@@ -125,26 +148,37 @@ export const orderTableHeader = [
         },
     },
     {
-        name: "orderDate",
+        name: "created_at",
         label: "Order Date",
         options: {
             filter: true,
             sort: true,
+            customBodyRender: (value) => {
+                return (
+                    //  add time also with date
+                    <span>
+                        {new Date(value).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "numeric",
+                        })}
+                    </span>
+                );
+            },
         },
     },
     {
-        name: "action",
+        name: "id",
         label: "Action",
         options: {
             customBodyRender: (value) => {
-                console.log(value);
                 return (
                     <div className="actionWrapper">
-                        <Link to={`/products`} className="actionBtn">
-                            Edit
+                        <Link to={`/orders/${value}`}>
+                            <VisibilityIcon />
                         </Link>
-                        {/* kk<p className="actionBtn">Edit</p> */}
-                        {/* <button  className="actionBtn">Edit</button> */}
                     </div>
                 );
             },

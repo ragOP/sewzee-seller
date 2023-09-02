@@ -1,0 +1,110 @@
+.orderInfoHeaderWrapper{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.orderInfoHeaderLeft{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.orderInfoHeaderLeft h2{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 24px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+.orderInfoHeaderLeft p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--darkGray);
+    margin-bottom: 10px;
+}
+.orderInfoHeaderLeft button{
+    width: 130px;
+    height: 30px;
+    color: var(--white);
+    border: none;
+    outline: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    
+}
+
+.orderInfoHeaderLeft .completed{
+    background: var(--succeesGradient) !important;
+}
+
+.orderInfoHeaderLeft .ongoing{
+    background: var(--cosmicGradient) !important;
+}
+
+.orderInfoHeaderLeft .pending{
+    background: var(--viloetGradient);
+}
+.orderInfoHeaderLeft .rejected{
+    background: var(--dangerGradient);
+}
+
+.orderBtn{
+    width: 130px;
+    height: 35px;
+    color: var(--white);
+    border: none;
+    outline: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.orderBtn2{
+    width: 190px;
+    height: 35px;
+    color: var(--white);
+    border: none;
+    outline: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.orderBtn svg{
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+.rejectBtn{
+    background: var(--dangerGradient);
+}
+.keepBtn{
+    background: var(--viloetGradient);
+}
+
+.acceptBtn{
+    background: var(--succeesGradient);
+}

@@ -20,6 +20,7 @@ const EditProduct = lazy(() => import("../screens/EditProduct/EditProduct"));
 
 // Orders screens
 const Orders = lazy(() => import("../screens/Orders/Orders"));
+const SingleOrder = lazy(() => import("../screens/Orders/SingleOrder"));
 
 // profile
 const Profile = lazy(() => import("../screens/Profile/Profile"));
@@ -40,6 +41,10 @@ const RouterComponent = () => {
                         element={<EditProduct />}
                     ></Route>
                     <Route path="/orders" element={<Orders />}></Route>
+                    <Route
+                        path="/orders/:orderId"
+                        element={<SingleOrder />}
+                    ></Route>
                     <Route path="/profile" element={<Profile />}></Route>
                 </Route>
                 <Route element={<UnProtectedRouter />}>

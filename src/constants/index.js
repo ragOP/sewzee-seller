@@ -23,3 +23,8 @@ export const ProfileSidebarList = [
     "Bank Details",
     "Business Details",
 ];
+export const SingleOrderToggleItems = [
+    "Order Details",
+    "Timeline",
+    "Billing Breakdown",
+];

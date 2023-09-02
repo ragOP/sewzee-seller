@@ -8,6 +8,12 @@ import { orderTableHeader } from "../../constants/TableHeader";
 import { getOrdersThunk } from "../../store/actions/ordersAction/ordersAction";
 import { TableLoader } from "../../ui/SkeltonLoader/SkeltonLoader";
 
+const OrderDeatils = () => {
+    
+}
+
+
+
 const Orders = () => {
     const dispatch = useDispatch();
     const { orders } = useSelector((state) => state);
@@ -15,6 +21,16 @@ const Orders = () => {
     useEffect(() => {
         dispatch(getOrdersThunk());
     }, []);
+
+    
+
+    useEffect(() => {
+        if(orders?.orders?.length > 0) {
+            orders?.orders?.forEach((order) => {
+                
+            });
+        }
+    }, [orders]);
 
     return (
         <section className="ordersWrapper">
@@ -30,6 +46,7 @@ const Orders = () => {
                     />
                 )}
             </div>
+           
         </section>
     );
 };

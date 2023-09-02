@@ -10,9 +10,19 @@
     --darkGray: #797979;
     --succees: #00b341;
     --border: #dedede;
+    --toggleborder: #F6396D;
     --textBlack: #233036;
     --extraBlack:#0D0D0D;
     --inputText: #5C6469;
+  --viloetText: #6841FF;
+  --cosmicText: #763F6A;
+  --cardUp: #50DFB2;
+  --cardDown: #FE7198;
+  --succeesGradient: linear-gradient(50deg, #17C217, #008900);
+  --cosmicGradient: linear-gradient(45deg, #763F6A, #9D729A);
+  --dangerGradient: linear-gradient(45deg, #741003, #f5260b);
+  --viloetGradient: linear-gradient(45deg, #6841FF, #443487);
+
 }
 
 
@@ -259,6 +269,9 @@ input[type=number] {
 
 .gap0 {
     gap: 0 !important;
+}
+.gap5 {
+    gap: 5px !important;
 }
 
 /* width */
